@@ -1,0 +1,21 @@
+<% if @pet.errors.any? %>
+        <h5 class="error"><%= @pet.errors.full_messages.to_sentence %></h5>
+<% end %>
+
+
+<%= form_with model: @pet, local: true do |f| %>
+    <%= f.label :name, "Name" %><br>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :breed, "Breed" %><br>
+    <%= f.text_field :breed %><br>
+
+
+    <%= f.label :weight, "Weight" %><br>
+    <%= f.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'] %><br>
+
+    <%= f.label :gender, "Gender" %><br>
+    <%= f.select :gender, ['Male', 'Female'] %><br>
+
+    <%= f.submit %>
+<% end %> 
