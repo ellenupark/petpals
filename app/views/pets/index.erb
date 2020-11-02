@@ -1,1 +1,13 @@
 <h1>This is the index for pets</h1>
+
+<ul>
+    <% @pets.each do | pet | %>
+        <li>Name: <%= pet.name %></li>
+        <ul>
+            <li>Breed: <%= pet.breed %></li>
+            <li>Size: <%= pet.weight %></li>
+            <li>Gender: <%= pet.gender %></li>
+        </ul>
+        <%= link_to "Invite", new_pet_event_path(pet.id) %>
+    <% end %>
+</ul>
