@@ -17,6 +17,22 @@ class User < ApplicationRecord
     end
   end
 
+  def confirmed_events
+    Event.joins(:invites).joins(:pets).where(host_pet_id: 1).where(accepted: true).or(Event.where(accepted: true).joins(:invites).joins(:pets).where(pets: { user_id: 3 }))
+  end
+
+  def unconfirmed_attendee_events
+    Event.all.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: current_user.id })
+  end
+
+  def unconfirmed_host_events
+    Event.where(host_pet_id: pet_ids_as_array).where(accepted: false)
+  end
+
+  def pet_ids_as_array
+    Pet.select { | pet | pet.user == self }.map { | pet | pet.id }
+  end
+
   def self.states 
     ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY']
   end
