@@ -3,6 +3,9 @@
 <ul>
     <% @pets.each do | pet | %>
         <li>Name: <%= pet.name %></li>
+        <% if pet.avatar.attached? %>
+            <%= image_tag(pet.avatar, style: "max-width: 250px") %>
+        <% end %>
         <ul>
             <li>Breed: <%= pet.breed %></li>
             <li>Size: <%= pet.weight %></li>

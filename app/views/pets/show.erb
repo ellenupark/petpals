@@ -1,7 +1,7 @@
 <h1>This is the show pet page</h1>
 
-<% if @pet.image.attached?%>
-    <%= image_tag(@pet.image, size: "326x430")%>
+<% if @pet.avatar.attached? %>
+    <%= image_tag(@pet.avatar, style: "max-width: 250px") %>
 <% end %>
 
 <ul>

@@ -24,7 +24,7 @@ class PetsController < ApplicationController
   end
   
   def edit
-      
+    redirect_if_not_owner
   end
   
   def update
@@ -51,7 +51,7 @@ class PetsController < ApplicationController
   end
 
   def pet_params
-    params.require(:pet).permit(:name, :breed, :weight, :gender, :image)
+    params.require(:pet).permit(:name, :breed, :weight, :gender, :avatar)
   end
 
 end

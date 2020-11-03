@@ -11,9 +11,16 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice != nil %>
+      <p class="flash notice"><%= notice %></p>
+    <% elsif alert != nil %>
+      <p class="flash alert"><%= alert %></p>
+    <% end %>
     <%= render 'layouts/nav' %>
     <%= yield %>
   </body>
+
+  <footer class="branding">
+    <small>&copy; 2020 Pet Pals </small>
+  </footer>
 </html>
