@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def unconfirmed_attendee_events
-    Event.all.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: current_user.id })
+    Event.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: self.id })
   end
 
   def unconfirmed_host_events

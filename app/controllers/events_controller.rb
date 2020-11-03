@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-    before_action :set_event, only: [:accept, :decline]
+    before_action :set_event, only: [:accept, :decline, :destroy]
 
     def new
         @event = Event.new
@@ -31,6 +31,13 @@ class EventsController < ApplicationController
     end
 
     def decline
+        redirect_to event_path(params(:id))
+    end
+
+    def destroy
+        @event.destroy
+        #add cancel notification?
+        redirect_to user_path(current_user.id)
     end
 
     private
