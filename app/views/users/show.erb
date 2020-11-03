@@ -10,18 +10,16 @@
     <%= link_to pet.name, pet_path(pet.id) %>
 <% end %>
 
-<% @pets.each do | pet | %>
-    <% pet.invites.each do | invite | %>
-        <% if invite.event.accepted != true %>
-            <h3>You've been invited to the following event: </h3>
-            <p><%= invite.event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-            <p>Playdate with <%= Pet.all.find_by_id(invite.event.host_pet_id).name %></p>
-            <%= link_to "Accept", "/events/#{invite.event.id}/accept", method: :patch %>
-            <%= link_to "Decline", "/events/#{invite.event.id}/decline", method: :patch %>
-        <% elsif invite.event.accepted == true %>
+<% @pets.events.each do | event | %>
+    <% if event.accepted != true %>
+        <h3><%= event.host %>: </h3>
+        <p><%= invite.event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+        <p>Playdate with <%= Pet.all.find_by_id(invite.event.host_pet_id).name %></p>
+        <%= link_to "Accept", "/events/#{invite.event.id}/accept", method: :patch %>
+        <%= link_to "Decline", "/events/#{invite.event.id}/decline", method: :patch %>
+    <% elsif invite.event.accepted == true %>
             <h3>Your Upcoming Events </h3>
             <p><%= invite.event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
             <p>Playdate with </p>
         <% end %>
-    <% end %>
 <% end %>

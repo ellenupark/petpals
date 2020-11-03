@@ -11,3 +11,19 @@
         <%= link_to "Invite", new_pet_event_path(pet.id) %>
     <% end %>
 </ul>
+
+<% @pets.each do | pet | %>
+    <% pet.invites.each do | invite | %>
+        <% if invite.event.accepted != true %>
+            <h3>You've been invited to the following event: </h3>
+            <p><%= invite.event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+            <p>Playdate with <%= Pet.all.find_by_id(invite.event.host_pet_id).name %></p>
+            <%= link_to "Accept", "/events/#{invite.event.id}/accept", method: :patch %>
+            <%= link_to "Decline", "/events/#{invite.event.id}/decline", method: :patch %>
+        <% elsif invite.event.accepted == true %>
+            <h3>Your Upcoming Events </h3>
+            <p><%= invite.event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+            <p>Playdate with </p>
+        <% end %>
+    <% end %>
+<% end %>
