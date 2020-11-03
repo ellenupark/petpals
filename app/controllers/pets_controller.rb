@@ -1,48 +1,57 @@
 class PetsController < ApplicationController
-    before_action :set_pet, only: [:show, :edit, :update, :destroy]
+  before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
-    def index
-        @pets = Pet.all
-    end
+  def index
+    @pets = Pet.all
+  end
 
-    def show
+  def show
 
-    end
+  end
   
-    def new
-        @pet = Pet.new
-    end
+  def new
+    @pet = Pet.new
+  end
   
-    def create
-        @pet = Pet.new(pet_params)
-        @pet.user = current_user
-        if @pet.save
-          redirect_to pet_path(@pet)
-        else
-          render "new"
-        end
+  def create
+    @pet = Pet.new(pet_params)
+    @pet.user = current_user
+    if @pet.save
+      redirect_to pet_path(@pet)
+    else
+      render "new"
     end
+  end
   
-    def edit
-
-    end
+  def edit
+      
+  end
   
-    def update
-
+  def update
+    if @pet
+      @pet.update(pet_params)
+      if @pet.errors.any?
+        render "edit"
+      else
+        redirect_to @pet
+      end
+    else
+      render "edit"
     end
+  end
   
-    def destroy
+  def destroy
 
-    end
+  end
   
-    private
+  private
 
-    def set_pet
-      @pet = Pet.find_by_id(params[:id])
-    end
+  def set_pet
+    @pet = Pet.find_by_id(params[:id])
+  end
 
-    def pet_params
-      params.require(:pet).permit(:name, :breed, :weight, :gender)
-    end
+  def pet_params
+    params.require(:pet).permit(:name, :breed, :weight, :gender, :image)
+  end
 
 end

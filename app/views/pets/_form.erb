@@ -17,5 +17,8 @@
     <%= f.label :gender, "Gender" %><br>
     <%= f.select :gender, ['Male', 'Female'] %><br>
 
+    <%= f.label :image, "Profile Image" %><br>
+    <%= f.file_field :image %><br>
+
     <%= f.submit %>
 <% end %> 
