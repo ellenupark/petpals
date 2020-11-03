@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+    before_action :set_event, only: [:accept, :decline]
+
     def new
         @event = Event.new
         @event.invites.build(pet_id: params[:pet_id])
@@ -6,7 +8,7 @@ class EventsController < ApplicationController
 
     def create
         @event = Event.new(event_params)
-        @event.invites.last.pet_id = params[:event][:pet_id]
+        @event.invites.last.pet = Pet.all.find_by_id(params[:event][:pet_id])
         if @event.save
             redirect_to pet_event_path(@event.pets.first.id, @event.id)
         else
@@ -18,7 +20,24 @@ class EventsController < ApplicationController
         @event = Event.find_by_id(params[:id])
     end
 
+    def accept 
+        if @event
+            @event.accepted = true
+            @event.save
+            redirect_to pet_event_path(@event.pets.first.id, @event.id)
+        else
+            redirect_to user_path(current_user)
+        end
+    end
+
+    def decline
+    end
+
     private
+
+    def set_event
+        @event = Event.find_by_id(params[:id])
+    end
 
     def event_params
         params.require(:event).permit(:date, :address_line_one, :address_line_two, :city, :state, :zip, :host_pet_id, :accepted,

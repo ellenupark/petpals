@@ -1,6 +1,14 @@
 <h1>Event Show Page</h1>
 
+<% if @event.accepted == true %>
+    <h1>EVENT CONFIRMED</h1>
+<% end %>
+
 <ul>
-    <li>Date: <%= @event.date %></li>
-    <li>Playdate with: <%= @event.pets.first.name %></li>
+    <li>Date: <%= @event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></li>
+    <% if @event.pets.first.user == current_user %>
+        <li>Playdate with: <%= Pet.find_by_id(@event.host_pet_id).name %></li>
+    <% else %>
+        <li>Playdate with: <%= @event.pets.first.name %></li>
+    <% end %>
 </ul>

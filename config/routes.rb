@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   resources :pets do
     resources :events, only: [:show, :new]
   end
+
+  resources :users, :only => [:show]
   
   resources :events, only: [:destroy, :create]
   
-  patch '/events/:id', to: 'events#accept'
+  patch '/events/:id/accept', to: 'events#accept'
+  patch '/events/:id/decline', to: 'events#decline'
  
 
   root to: "application#home"
