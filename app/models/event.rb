@@ -7,4 +7,8 @@ class Event < ApplicationRecord
     def host
         User.find_by_id(self.host_pet_id.user.id)
     end
+
+    def host_pet
+        Pet.find_by_id(self.host_pet_id)
+    end
 end

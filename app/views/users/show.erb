@@ -12,8 +12,8 @@
 
 <% @pets.events.each do | event | %>
     <% if event.accepted != true %>
-        <h3><%= event.host %>: </h3>
-        <p><%= invite.event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+        <h3><%= event.host %> has invited you to the following playdate: </h3>
+        <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
         <p>Playdate with <%= Pet.all.find_by_id(invite.event.host_pet_id).name %></p>
         <%= link_to "Accept", "/events/#{invite.event.id}/accept", method: :patch %>
         <%= link_to "Decline", "/events/#{invite.event.id}/decline", method: :patch %>
