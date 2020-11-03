@@ -20,7 +20,7 @@
             <% else %>
                 <p>Playdate with <%= event.host_pet.name %></p>
             <% end %>
-            <%= link_to "Cancel", event_path(event.id), method: :delete %>
+            <%= link_to "Cancel", event_path(event), method: :delete %>
 
     <% end %>
 <% end %>
@@ -31,7 +31,7 @@
             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
             <p>Playdate with <%= event.host_pet.name %></p>
             <%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %>
-            <%= link_to "Decline", "/events/#{event.id}/decline", method: :patch %> 
+            <%= link_to "Decline", event_path(event), method: :delete %> 
     <% end %>
 <% end %>
 
@@ -40,6 +40,6 @@
     <% current_user.unconfirmed_host_events.each do | event | %>
             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
             <p>Playdate with <%= event.pets.first.name %></p>
-            <%= link_to "Cancel", event_path(event.id), method: :delete %>
+            <%= link_to "Cancel", event_path(event), method: :delete %>
     <% end %>
 <% end %>
