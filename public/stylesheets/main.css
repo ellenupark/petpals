@@ -7,6 +7,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
     line-height: 1;
+    background-color: #456990;
+}
+
+.default {
+    min-height: 620px;
 }
 
 .flash {
@@ -42,16 +47,35 @@ body {
 }
 
 
-  .section {
+.section {
       border: 1px solid red;
-  }
+}
 
 .profile-card {
     border: 1px solid red;
     border-radius: 10px;
-    background: #73AD21;
+    background: #E4FDE1;
     padding: 20px;
-    width: 300px;
+    width: 280px;
     height: 350px;
     margin: 10px;
+    text-align: center;
+}
+
+.card-img {
+    border-radius: 10px;
+    min-width: 150px;
+    min-height: 120px;
+    max-height: 200px;
+    
+}
+
+/* FOOTER */
+
+footer.branding {
+    padding: 70px 60px 60px 60px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid red;
 }

@@ -1,14 +1,18 @@
-<div>
-    <h1>This is the show pet page</h1>
+<section class="section default">
+ 
+    <div>
+        <h1>This is the show pet page</h1>
 
-    <% if @pet.avatar.attached? %>
-        <%= image_tag(@pet.avatar, style: "max-width: 250px") %>
-    <% end %>
+        <% if @pet.avatar.attached? %>
+            <%= image_tag(@pet.avatar, style: "max-width: 250px") %>
+        <% end %>
 
-    <ul>
-        <li><%= @pet.name %></li>
-        <li><%= @pet.breed %></li>
-        <li><%= @pet.weight %></li>
-        <li><%= @pet.gender %></li>
-    </ul>
-</div>
+        <ul>
+            <li><%= @pet.name %></li>
+            <li><%= @pet.breed %></li>
+            <li><%= @pet.weight %></li>
+            <li><%= @pet.gender %></li>
+        </ul>
+    </div>
+
+</section>

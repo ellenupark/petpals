@@ -1,26 +1,10 @@
-<h1>This is the index for pets</h1>
-<div class="columns is-mobile is-multiline is-centered">
-    <% @pets.each do | pet | %>
-        <div class="column is-narrow profile-card">
-            <p class="bd-notification is-primary">
-            <code class="html">is-narrow</code><br>
-            First Column
-            </p>
-        </div>
-    <% end %>
-</div>
-
-<ul>
-    <% @pets.each do | pet | %>
-        <li>Name: <%= pet.name %></li>
-        <% if pet.avatar.attached? %>
-            <%= image_tag(pet.avatar, style: "max-width: 250px") %>
+<section class="section default">
+    <div class="columns is-mobile is-multiline is-centered">
+        <% @pets.each do | pet | %>
+            <div class="column is-narrow profile-card">
+                <%= image_tag(pet.avatar, style: "max-width: 100px", :class => "card-img") %>
+                <p><%= link_to pet.name, pet_path(pet.id) %></p>
+            </div>
         <% end %>
-        <ul>
-            <li>Breed: <%= pet.breed %></li>
-            <li>Size: <%= pet.weight %></li>
-            <li>Gender: <%= pet.gender %></li>
-        </ul>
-        <%= link_to "Invite", new_pet_event_path(pet.id) %>
-    <% end %>
-</ul>
+    </div>
+</section>

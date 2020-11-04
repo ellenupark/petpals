@@ -1,17 +1,20 @@
-<h1>Event Show Page</h1>
-<% binding.pry %>
+<section class="section default">
 
-<% if @event.accepted == true %>
-    <h1>EVENT CONFIRMED</h1>
-<% else %>
-    <h1>PENDING</h1>
-<% end %>
+    <h1>Event Show Page</h1>
+    <% binding.pry %>
 
-<ul>
-    <li>Date: <%= @event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></li>
-    <% if @event.pets.first.user == current_user %>
-        <li>Playdate with: <%= Pet.find_by_id(@event.host_pet_id).name %></li>
+    <% if @event.accepted == true %>
+        <h1>EVENT CONFIRMED</h1>
     <% else %>
-        <li>Playdate with: <%= @event.pets.first.name %></li>
+        <h1>PENDING</h1>
     <% end %>
-</ul>
+
+    <ul>
+        <li>Date: <%= @event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></li>
+        <% if @event.pets.first.user == current_user %>
+            <li>Playdate with: <%= Pet.find_by_id(@event.host_pet_id).name %></li>
+        <% else %>
+            <li>Playdate with: <%= @event.pets.first.name %></li>
+        <% end %>
+    </ul>
+</section>
