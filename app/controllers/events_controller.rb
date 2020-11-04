@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
     def new
         @event = Event.new
-        @event.invites.build(pet_id: params[:pet_id])
+        @event.invites.build
     end
 
     def create

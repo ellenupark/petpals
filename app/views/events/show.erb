@@ -1,7 +1,10 @@
 <h1>Event Show Page</h1>
+<% binding.pry %>
 
 <% if @event.accepted == true %>
     <h1>EVENT CONFIRMED</h1>
+<% else %>
+    <h1>PENDING</h1>
 <% end %>
 
 <ul>

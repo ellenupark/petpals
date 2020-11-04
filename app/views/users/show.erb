@@ -25,12 +25,18 @@
 <% end %>
 
 <% if !current_user.unconfirmed_attendee_events.empty? %>
-    <h3>You've been invited to the following events</h3>
-    <% current_user.unconfirmed_attendee_events.each do | event | %>
-            <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-            <p>Playdate with <%= event.host_pet.name %></p>
-            <%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %>
-            <%= link_to "Decline", event_path(event), method: :delete %> 
+     <% current_user.unconfirmed_attendee_events.each do | event | %>
+        <article class="message">
+            <div class="message-header">
+                <p><%= event.host.username %> has invited <%= event.pets.first.name %> to the following event </p>
+            </div>
+            <div class="message-body">
+                <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+                <p>Playdate with <%= event.host_pet.name %></p>
+                <button class="button is-small"><%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %></button>
+                <button class="button is-small"><%= link_to "Decline", event_path(event), method: :delete %></button>
+            </div>
+        </article>
     <% end %>
 <% end %>
 
