@@ -1,4 +1,14 @@
 <h1>This is the index for pets</h1>
+<div class="columns is-mobile is-multiline is-centered">
+    <% @pets.each do | pet | %>
+        <div class="column is-narrow profile-card">
+            <p class="bd-notification is-primary">
+            <code class="html">is-narrow</code><br>
+            First Column
+            </p>
+        </div>
+    <% end %>
+</div>
 
 <ul>
     <% @pets.each do | pet | %>

@@ -45,3 +45,13 @@ body {
   .section {
       border: 1px solid red;
   }
+
+.profile-card {
+    border: 1px solid red;
+    border-radius: 10px;
+    background: #73AD21;
+    padding: 20px;
+    width: 300px;
+    height: 350px;
+    margin: 10px;
+}
