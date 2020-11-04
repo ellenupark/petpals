@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
     def home
     end
 
+    def about
+    end
+
     private
     def redirect_if_not_owner
       if !@pet
