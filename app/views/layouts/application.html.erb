@@ -4,21 +4,43 @@
     <title>Petpals</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "/stylesheets/main.css" %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
   </head>
 
   <body>
-    <% if notice != nil %>
-      <p class="flash notice"><%= notice %></p>
-    <% elsif alert != nil %>
-      <p class="flash alert"><%= alert %></p>
-    <% end %>
-    <%= render 'layouts/nav' %>
-    <%= yield %>
+    <!-- Navigation Bar -->
+    <nav class="topnav">
+      <div>
+        <a class="left-nav" href="/">Home</a>
+        <a class="left-nav" href="/pets">Browse</a>
+      </div>
+
+      <div>
+        <% if user_signed_in? %>
+          <a class="left-nav" href="/users/<%= current_user.id %>">Profile</a>
+          <a class="button is-light right-nav" href="/users/sign_out">Log out</a>
+        <% else %>
+          <a class="button is-light right-nav" href="/users/sign_in">Log in</a>
+          <a class="button is-primary right-nav" href="/users/sign_up">Sign up</a>
+        <% end %>
+      </div>
+    </nav>    
+
+    <div class="wrapper">
+      <% if notice != nil %>
+        <p class="flash notice"><%= notice %></p>
+      <% elsif alert != nil %>
+        <p class="flash alert"><%= alert %></p>
+      <% end %>
+      <%= render 'layouts/nav' %>
+      <%= yield %>
+    </div>
   </body>
+  
 
   <footer class="branding">
     <small>&copy; 2020 Pet Pals </small>
