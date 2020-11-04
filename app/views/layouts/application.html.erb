@@ -11,24 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
   </head>
 
-  <body>
-    <!-- Navigation Bar -->
-    <nav class="topnav">
-      <div>
-        <a class="left-nav" href="/">Home</a>
-        <a class="left-nav" href="/pets">Browse</a>
-      </div>
-
-      <div>
-        <% if user_signed_in? %>
-          <a class="left-nav" href="/users/<%= current_user.id %>">Profile</a>
-          <a class="button is-light right-nav" href="/users/sign_out">Log out</a>
-        <% else %>
-          <a class="button is-light right-nav" href="/users/sign_in">Log in</a>
-          <a class="button is-primary right-nav" href="/users/sign_up">Sign up</a>
-        <% end %>
-      </div>
-    </nav>    
+  <body>  
 
     <div class="wrapper">
       <% if notice != nil %>
