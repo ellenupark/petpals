@@ -3,4 +3,5 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @pets = @user.pets
     end
+
 end

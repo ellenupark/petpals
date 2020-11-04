@@ -1,54 +1,70 @@
 <section class="section default">
-
-    <h1>This is the user show page</h1>
-
-    <% if current_user == User.all.find_by_id(params[:id]) %>
-        <p>Your profile page!</p>
-    <% end %>
-
-    <% if !current_user.pets.empty? %>
-        <h3>Here are all your pets:</h3>
-        <% @pets.each do | pet | %>
-            <%= link_to pet.name, pet_path(pet.id) %>
-        <% end %>
-    <% end %>
-
-    <% if !current_user.confirmed_events.empty? %>
-        <h3>Your Upcoming Events</h3>
-        <% current_user.confirmed_events.each do | event | %>
-                <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                <% if Pet.find_by_id(event.host_pet_id).user == current_user %>
-                    <p>Playdate with <%= event.pets.first.name %></p>
-                <% else %>
-                    <p>Playdate with <%= event.host_pet.name %></p>
+    <div class="columns">
+        <div class="column is-one-quarter">
+            <div class="center-content">
+                <h2 class="title is-2">Welcome <%= current_user.username %></h2>
+                <p>Member since <%= current_user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
+                <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
+            </div>
+            <div class="profile-about center-content ">
+                <% if !current_user.pets.empty? %>
+                    <h4 class="title is-4">Your Pets</h3>
+                    <% @pets.each do | pet | %>
+                        <div>
+                            <%= link_to pet.name, pet_path(pet.id), class: "subtitle is-6" %><br>
+                            <%= image_tag(pet.avatar, style: "border-radius: 100%; max-width: 150px") %><br>
+                        </div>
+                    <% end %>
                 <% end %>
-                <%= link_to "Cancel", event_path(event), method: :delete %>
-        <% end %>
-    <% end %>
-
-    <% if !current_user.unconfirmed_attendee_events.empty? %>
-        <% current_user.unconfirmed_attendee_events.each do | event | %>
-            <article class="message">
-                <div class="message-header">
-                    <p><%= event.host.username %> has invited <%= event.pets.first.name %> to the following event </p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="columns is-mobile">
+                <div class="column center-content">
+                    <h3 class="title is-3">Upcoming Events</h3>
+                    <% if !current_user.confirmed_events.empty? %>
+                        <% current_user.confirmed_events.each do | event | %>
+                            <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+                            <% if Pet.find_by_id(event.host_pet_id).user == current_user %>
+                                <p>Playdate with <%= event.pets.first.name %></p>
+                            <% else %>
+                                <p>Playdate with <%= event.host_pet.name %></p>
+                            <% end %>
+                            <%= link_to "Cancel", event_path(event), method: :delete %>
+                        <% end %>
+                    <% else %>
+                        <p>None</p>
+                    <% end %>
                 </div>
-                <div class="message-body">
-                    <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                    <p>Playdate with <%= event.host_pet.name %></p>
-                    <button class="button is-small"><%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %></button>
-                    <button class="button is-small"><%= link_to "Decline", event_path(event), method: :delete %></button>
+                <div class="column">
+                    <% if !current_user.unconfirmed_host_events.empty? %>
+                        <h3>Awaiting response...</h3>
+                        <% current_user.unconfirmed_host_events.each do | event | %>
+                            <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+                            <p>Playdate with <%= event.pets.first.name %></p>
+                            <%= link_to "Cancel", event_path(event), method: :delete %>
+                        <% end %>
+                    <% else %>
+                    <% end %>
                 </div>
-            </article>
-        <% end %>
-    <% end %>
-
-    <% if !current_user.unconfirmed_host_events.empty? %>
-        <h3>Awaiting response...</h3>
-        <% current_user.unconfirmed_host_events.each do | event | %>
-                <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                <p>Playdate with <%= event.pets.first.name %></p>
-                <%= link_to "Cancel", event_path(event), method: :delete %>
-        <% end %>
-    <% end %>
-
+                <div class="column is-half">
+                    <% if !current_user.unconfirmed_attendee_events.empty? %>
+                        <% current_user.unconfirmed_attendee_events.each do | event | %>
+                            <article class="message is-danger">
+                                <div class="message-header">
+                                    <p><%= event.host.username %> has invited <%= event.pets.first.name %> to the following event </p>
+                                </div>
+                                <div class="message-body">
+                                    <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+                                    <p>Playdate with <%= event.host_pet.name %></p>
+                                    <button class="button is-small"><%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %></button>
+                                    <button class="button is-small"><%= link_to "Decline", event_path(event), method: :delete %></button>
+                                </div>
+                            </article>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

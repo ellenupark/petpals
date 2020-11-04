@@ -20,11 +20,11 @@ class User < ApplicationRecord
   end
 
   def confirmed_events
-    Event.joins(:invites).joins(:pets).where(host_pet_id: 1).where(accepted: true).or(Event.where(accepted: true).joins(:invites).joins(:pets).where(pets: { user_id: 3 }))
+    Event.joins(:invites).joins(:pets).where(host_pet_id: 1).where(accepted: true).or(Event.where(accepted: true).joins(:invites).joins(:pets).where(pets: { user_id: self.id }))
   end
 
   def unconfirmed_attendee_events
-    Event.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: self.id })
+    Event.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: self.id }).uniq
   end
 
   def unconfirmed_host_events

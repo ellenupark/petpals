@@ -1,17 +1,25 @@
-/* NAV BAR */
-
-
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
 
 body {
     line-height: 1;
-    background-color: #456990;
+    background-color: #688db6;
 }
 
+/* Formats page to work with navbar/footer */
 .default {
     min-height: 620px;
+}
+
+.center-content {
+    text-align: center;
+}
+
+/* --------- USER PROFILE PAGE --------- */
+
+.profile-about {
+    padding: 20px;
 }
 
 .flash {

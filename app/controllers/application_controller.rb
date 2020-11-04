@@ -1,11 +1,14 @@
 class ApplicationController < ActionController::Base
-    def home
-    end
+  before_action :authenticate_user!, unless: :devise_controller?
+  skip_before_action :authenticate_user!, only: [:home, :about]
 
-    def about
-    end
+  def home
+  end
 
-    private
+  def about
+  end
+
+  private
     def redirect_if_not_owner
       if !@pet
         redirect_to pets_path, alert: "Pet does not exist."
