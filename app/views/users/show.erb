@@ -4,9 +4,10 @@
             <div class="center-content">
                 <h2 class="title is-2">Welcome <%= current_user.username %></h2>
                 <p>Member since <%= current_user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
-                <p><%= link_to "Edit Profile", edit_user_registration_path %></p>
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing" %><br>
+                <%= link_to "Add Pet", new_pet_path, class: "button button-spacing" %>
             </div>
-            <div class="profile-about center-content ">
+            <div class="profile-about center-content">
                 <% if !current_user.pets.empty? %>
                     <h4 class="title is-4">Your Pets</h3>
                     <% @pets.each do | pet | %>
@@ -36,32 +37,37 @@
                         <p>None</p>
                     <% end %>
                 </div>
-                <div class="column">
+                <div class="column center-content">
                     <% if !current_user.unconfirmed_host_events.empty? %>
-                        <h3>Awaiting response...</h3>
+                        <h3 class="title is-3">Awaiting response</h3>
                         <% current_user.unconfirmed_host_events.each do | event | %>
                             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
                             <p>Playdate with <%= event.pets.first.name %></p>
-                            <%= link_to "Cancel", event_path(event), method: :delete %>
+                            <%= link_to "Cancel Invite", event_path(event), method: :delete %>
                         <% end %>
                     <% else %>
                     <% end %>
                 </div>
-                <div class="column is-half">
+                <div class="column is-half center-content">
+                    <h3 class="title is-3">New Event Invites</h3>
                     <% if !current_user.unconfirmed_attendee_events.empty? %>
                         <% current_user.unconfirmed_attendee_events.each do | event | %>
                             <article class="message is-danger">
                                 <div class="message-header">
-                                    <p><%= event.host.username %> has invited <%= event.pets.first.name %> to the following event </p>
+                                    <p><%= event.host.username.capitalize %> has invited <%= event.pets.first.name.capitalize %> to the following event </p>
                                 </div>
                                 <div class="message-body">
                                     <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
                                     <p>Playdate with <%= event.host_pet.name %></p>
+
+                                    <p><%= event.host.username.capitalize %> left the following message: <%= event.invites.first.message %></p>
                                     <button class="button is-small"><%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %></button>
                                     <button class="button is-small"><%= link_to "Decline", event_path(event), method: :delete %></button>
                                 </div>
                             </article>
                         <% end %>
+                    <% else %>
+                        <p>No invites yet.</p>
                     <% end %>
                 </div>
             </div>

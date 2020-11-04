@@ -87,3 +87,7 @@ footer.branding {
     text-align: center;
     border: 1px solid red;
 }
+
+.button-spacing {
+    margin: 5px;
+}
