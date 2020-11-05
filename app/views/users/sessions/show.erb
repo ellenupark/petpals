@@ -48,7 +48,7 @@
                         <h3 class="title is-3">Awaiting response</h3>
                         <% current_user.unconfirmed_host_events.each do | event | %>
                             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                            <p>Playdate with <%= event.pets.first.name %></p>
+                            <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
                             <%= link_to "Cancel Invite", event_path(event), method: :delete %>
                         <% end %>
                     <% end %>

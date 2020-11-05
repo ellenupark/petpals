@@ -34,6 +34,10 @@ class EventsController < ApplicationController
         @events = Event.past_events.select { | event | event.host == current_user || event.pets.first.user == current_user }
     end
 
+    def pending
+        @events = current_user.unconfirmed_host_events
+    end
+
     def decline
         binding.pry
         redirect_to event_path(params[:id])
