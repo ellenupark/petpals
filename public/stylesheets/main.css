@@ -16,12 +16,6 @@ body {
     box-shadow: 0px 0px 20px 0px #000000; 
 }
 
-/* --------- NAV BAR --------- */
-
-.navbar {
-    box-shadow: 0px 0px 10px 0px #CDCDCD;
-}
-
 /* Formats page to work with navbar/footer */
 .default {
     min-height: 620px;
@@ -29,6 +23,17 @@ body {
 
 .center-content {
     text-align: center;
+}
+
+.small-font {
+    font-size: 12px;
+}
+
+/* --------- NAV BAR --------- */
+
+.navbar {
+    box-shadow: 0px 0px 10px 0px #CDCDCD;
+    font-weight: 600;
 }
 
 /* --------- USER PROFILE PAGE --------- */
@@ -40,7 +45,7 @@ body {
 /* --------- FORMS --------- */
 
 .form-width {
-    padding: 10px 250px;
+    padding: 0px 250px;
 }
 
 
