@@ -2,6 +2,8 @@ class EventsController < ApplicationController
     before_action :set_event, only: [:accept, :decline, :destroy]
 
     def new
+        redirect_if_no_pets
+        
         @recipient = Pet.find_by_id(params[:pet_id])
         @event = Event.new
         @event.invites.build

@@ -17,6 +17,12 @@ class ApplicationController < ActionController::Base
         redirect_to pet_path(@pet), alert: "This is not yours to edit."
       end
     end
+
+    def redirect_if_no_pets
+      if current_user.pets.empty?
+        redirect_back(fallback_location:"/", alert: "You do not have any pets!")
+      end
+    end
     
   #   def redirect_if_not_logged_in(route, type, message)
   #     if !logged_in?
