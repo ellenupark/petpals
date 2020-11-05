@@ -39,6 +39,10 @@ body {
     padding-bottom: 20px;
 }
 
+.bold-font {
+    font-weight: bold;
+}
+
 /* --------- NAV BAR --------- */
 
 .navbar {

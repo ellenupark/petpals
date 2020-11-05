@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   #tells devise where to find RegistrationsController (for the controllers, look for our registrations controller)
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'callbacks', sessions: 'users/sessions' }
+
+  get '/search', to: 'pets#search', as: 'search_page'
+
   
   resources :pets do
     resources :events, only: [:show, :new]
   end
 
-  get '/search', to: 'pets#search', as: 'search_page'
-
   devise_scope :user do
-    get '/users/:id', to: 'users/sessions#show'
+    get '/users/:id', to: 'users/sessions#show', as: 'user'
   end
   
   resources :events, only: [:destroy, :create]
