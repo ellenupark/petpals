@@ -4,7 +4,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
     line-height: 1;
-    background-color: #688db6;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/grass.webp');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.section {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #EBEBEB;
+    box-shadow: 0px 0px 20px 0px #000000; 
+}
+
+/* --------- NAV BAR --------- */
+
+.navbar {
+    box-shadow: 0px 0px 10px 0px #CDCDCD;
 }
 
 /* Formats page to work with navbar/footer */
@@ -54,11 +69,6 @@ body {
     clear: both;
 }
 
-
-.section {
-      border: 1px solid red;
-}
-
 .profile-card {
     border: 1px solid red;
     border-radius: 10px;
@@ -81,6 +91,7 @@ body {
 /* FOOTER */
 
 footer.branding {
+    background: #000000;
     padding: 70px 60px 60px 60px;
     color: white;
     font-weight: bold;
