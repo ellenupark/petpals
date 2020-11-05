@@ -136,8 +136,9 @@ body {
     clear: both;
 }
 
+/* --------- PETS SHOW PAGE --------- */
+
 .profile-card {
-    border: 1px solid red;
     border-radius: 10px;
     background: #E4FDE1;
     padding: 20px;
