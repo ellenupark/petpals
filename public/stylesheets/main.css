@@ -52,7 +52,7 @@ body {
 /* --------- FLASH ERROR MESSAGES --------- */
 
 .flash {
-        margin-top: 5px;
+        margin-top: 65px;
         z-index: 100;
         width: 600px;
         padding: 5px;

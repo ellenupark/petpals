@@ -2,8 +2,9 @@
     <div class="columns">
         <div class="column is-one-quarter">
             <div class="center-content">
-                <h2 class="title is-2">Welcome <%= current_user.username %></h2>
+                <h3 class="title is-3">Welcome <%= current_user.username.capitalize %></h2>
                 <p>Member since <%= current_user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
+
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing" %><br>
                 <%= link_to "Add Pet", new_pet_path, class: "button button-spacing" %>
             </div>
@@ -34,9 +35,11 @@
                             <%= link_to "Cancel", event_path(event), method: :delete %>
                         <% end %>
                     <% else %>
-                        <p>None</p>
+                        <p>None scheduled.</p>
+                        <%= link_to "Find Playmate?", pets_path %>
                     <% end %>
                 </div>
+
                 <div class="column center-content">
                     <% if !current_user.unconfirmed_host_events.empty? %>
                         <h3 class="title is-3">Awaiting response</h3>
@@ -45,7 +48,6 @@
                             <p>Playdate with <%= event.pets.first.name %></p>
                             <%= link_to "Cancel Invite", event_path(event), method: :delete %>
                         <% end %>
-                    <% else %>
                     <% end %>
                 </div>
                 <div class="column is-half center-content">

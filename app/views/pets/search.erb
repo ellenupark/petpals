@@ -1,0 +1,16 @@
+<section class="section default">
+<h3>Search Result</h3>  
+
+    <% @results.each do | pet | %>  
+        <% if pet.user != current_user %>
+            <div class="column is-narrow profile-card">
+                <%= image_tag(pet.avatar, style: "max-width: 100px", :class => "card-img") %>
+                <p><%= link_to pet.name, pet_path(pet.id) %></p>
+                <p>Breed: <%= pet.breed %></p>
+                <p>Size: <%= pet.weight %></p>
+                <p>Gender: <%= pet.gender %></p>
+                <%= link_to "Invite", new_pet_event_path(pet.id) %>
+            </div>
+        <% end %>
+    <% end %>
+</section>
