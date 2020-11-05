@@ -1,11 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
-  skip_before_action :authenticate_user!, only: [:home, :about]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
-  end
-
-  def about
   end
 
   private
