@@ -12,6 +12,7 @@
             <p>Weight: <%= @pet.weight %></p>
             <p>Gender: <%= @pet.gender %></p>
             <p>Location: <%= @pet.user.city.capitalize %>, <%= @pet.user.state %></p>
+            <p>Owner: <%= @pet.user.username.capitalize %></p>
             <% if @pet.user == current_user %>
                 <%= link_to "Edit", edit_pet_path(@pet), class: "button is-small is-light align-bottom" %>
                 <%= link_to 'Back', :back, class: "button is-small is-light align-bottom"%><br>
