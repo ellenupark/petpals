@@ -1,5 +1,10 @@
 <section class="section default">
-    <h1>This is the New Event Form!</h1>
+    <div class="center-content">
+        <h2 class="title is-2">Send Playdate Invite</h2>
+        <%= image_tag(@recipient.avatar, style: "max-width: 200px") %>
+        <p><%= @recipient.name.capitalize %></p>
+        <p>Owner: <%= @recipient.user.username.capitalize %></p><br>
+    </div>
 
     <%= render 'form' %>
 </section>
