@@ -3,6 +3,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 body {
+    font-family: 'Fontawesome';
     line-height: 1;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/grass.webp');
     background-size: cover;
@@ -58,6 +59,16 @@ body {
     width: 65%;
     margin: 0 auto;
     padding-top: 20px;
+}
+
+.notify {
+    background-color: white;
+    border: 1px solid red;
+    font-size: small;
+    font-weight: 500;
+    padding: 3px;
+    border-radius: 5px;
+    color: red;
 }
 
 /* --------- NAV BAR --------- */
@@ -136,7 +147,7 @@ body {
         border:1px solid #ccc;
         text-align: center;
         align-content: center;
-        position: fixed;
+        position: absolute;
         font-size: 13px;
         left: 27%;
 }
@@ -173,7 +184,7 @@ body {
     border-radius: 10px;
     background: #E4FDE1;
     width: 280px;
-    height: 300px;
+    height: 375px;
     margin: 0 auto;
     text-align: center;
     flex: 1;

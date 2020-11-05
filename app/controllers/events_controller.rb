@@ -31,7 +31,7 @@ class EventsController < ApplicationController
         end
     end
 
-    def past 
+    def history 
         @events = Event.past_events.select { | event | event.host == current_user || event.pets.first.user == current_user }
     end
 

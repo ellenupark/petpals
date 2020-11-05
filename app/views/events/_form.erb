@@ -36,10 +36,10 @@
     </div>
 
     <div class="field">
-      <%= f.label :state, class: "label" %>
-      <div class="control"> 
-        <%= f.text_field :state, class: "input" %>
-      </div>
+        <%= f.label :state, class: "label" %>
+        <div class="select">
+          <%= f.select :state, User.states %>
+        </div>
     </div>
 
     <div class="field">

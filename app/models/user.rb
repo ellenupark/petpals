@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable
   
-  validates :username, :city, :state, presence: true
+  validates :username, presence: true
   validates :username, uniqueness: { case_sensitive: false }
   
   has_many :pets
@@ -16,6 +16,7 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
+      location ""
     end
   end
 

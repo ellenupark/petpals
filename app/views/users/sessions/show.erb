@@ -4,8 +4,18 @@
             <div class="center-content">
                 <h3 class="title is-3">Welcome <%= current_user.username.capitalize %></h2>
                 <p>Joined <%= current_user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
-                <p><%= current_user.city.titleize %>, <%= current_user.state %></p><br>
-                <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing" %><br>
+                <p>
+                    <% if !current_user.city.empty? %>
+                        <%= current_user.city.titleize %>, 
+                    <% end %>
+                    <%= current_user.state %>
+                </p><br>
+                <% if current_user.city.empty? %>
+                    <p class="notify">Complete profile so dog owners can find you!</p>
+                    <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing is-danger is-light" %><br>
+                <% else %>
+                    <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing " %><br>
+                <% end %>
                 <%= link_to "Add Pet", new_pet_path, class: "is-info is-light button button-spacing" %>
             </div>
             <div class="profile-about center-content">
@@ -39,7 +49,7 @@
                         <%= link_to "Find Playmate?", pets_path %>
                     <% end %>
                     <div class="align-bottom">
-                        <%= link_to "History", events_past_path, class: "button is-small is-light" %>  
+                        <%= link_to "History", events_history_path, class: "button is-small is-light" %>  
                     </div>
                 </div>
 
