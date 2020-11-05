@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-    before_action :set_event, only: [:accept, :decline, :destroy]
+    before_action :set_event, only: [:accept, :decline, :destroy, :show]
+    before_action :redirect_if_not_event_owner
 
     def new
         redirect_if_no_pets
@@ -20,7 +21,6 @@ class EventsController < ApplicationController
     end
 
     def show
-        @event = Event.find_by_id(params[:id])
     end
 
     def accept 

@@ -36,13 +36,16 @@
                     <h3 class="title is-3">Upcoming Events</h3>
                     <% if !current_user.confirmed_events.empty? %>
                         <% current_user.confirmed_events.each do | event | %>
-                            <p><%= event.date.strftime("%B %eth, %Y at %l:%M%p") %></p>
-                            <% if event.host_pet.user == current_user %>
-                                <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
-                            <% else %>
-                                <p>Playdate with <%= event.pets.first.name %> and <%= event.host_pet.name %></p>
-                            <% end %>
-                            <%= link_to "View", event_path(event), class: "button is-small is-light" %>
+                            <div>
+                                <% if event.host_pet.user == current_user %>
+                                    <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
+                                <% else %>
+                                    <p>Playdate with <%= event.pets.first.name %> and <%= event.host_pet.name %></p>
+                                <% end %>
+                                <p><%= event.date.strftime("%B %eth, %Y at %l:%M%p") %></p>
+                                <%= link_to "View", event_path(event), class: "button is-small is-light" %>
+                                <%= link_to "Cancel", event_path(event), method: :delete, class: "button is-small is-light", data: { confirm: "Are you sure?" } %>
+                            </div>
                             <br>
                         <% end %>
                     <% else %>
@@ -60,15 +63,15 @@
                         <% current_user.unconfirmed_attendee_events.each do | event | %>
                             <article class="message is-danger">
                                 <div class="message-header">
-                                    <p><%= event.host.username.capitalize %> has invited <%= event.pets.first.name.capitalize %> to the following event </p>
+                                    <p><%= event.host.username.capitalize %> has invited <%= event.pets.first.name.capitalize %> to the following <%= link_to "Playdate", event_path(event) %> </p>
                                 </div>
                                 <div class="message-body">
                                     <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
                                     <p>Playdate with <%= event.host_pet.name %></p>
 
                                     <p><%= event.host.username.capitalize %> left the following message: <%= event.invites.first.message %></p>
-                                    <button class="button is-small"><%= link_to "Accept", "/events/#{event.id}/accept", method: :patch %></button>
-                                    <button class="button is-small"><%= link_to "Decline", event_path(event), method: :delete %></button>
+                                    <%= link_to "Accept", "/events/#{event.id}/accept", method: :patch, class: "button is-success is-small is-light" %>
+                                    <%= link_to "Decline", event_path(event), method: :delete, class: "button is-small is-light" %>
                                 </div>
                             </article>
                         <% end %>
