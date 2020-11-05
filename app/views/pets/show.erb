@@ -13,13 +13,14 @@
             <p>Gender: <%= @pet.gender %></p>
             <p>Location: <%= @pet.user.city.capitalize %>, <%= @pet.user.state %></p>
             <% if @pet.user == current_user %>
-                <%= link_to "Edit", edit_pet_path(@pet) %>
+                <%= link_to "Edit", edit_pet_path(@pet) %><br>
             <% end %>
-            <br>
+
+            <%= link_to 'Back', :back, class: "button is-small is-light align-bottom"%><br>
 
             <% if @pet.user == current_user %>
-                <h3><%= @pet.name %>'s Upcoming Events</h3>
                 <% if !current_user.confirmed_events.empty? %>
+                    <h3 class="title is-3"><%= @pet.name %>'s Upcoming Events</h3>
                     <% current_user.confirmed_events.each do | event | %>
                         <% if event.pets.first == @pet %>
                             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
