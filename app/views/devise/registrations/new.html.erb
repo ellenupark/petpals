@@ -1,35 +1,54 @@
 <section class="section default">
 
-  <h2>Sign up</h2>
+  <h2 class="title is-1">Sign up</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
+
+
     <div class="field">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
+      <%= f.label :username, class: "label" %>
+      <div class="control">
+        <%= f.text_field :username, autofocus: true, autocomplete: "username", class: "input", placeholder: "Text Input"%>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autocomplete: "email" %>
+      <%= f.label :email, class: "label" %>
+      <div class="control has-icons-left">
+        <%= f.email_field :email, autocomplete: "email", class: "input", placeholder: "Email" %>
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label :password, class: "label" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="control has-icons-left">
+        <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "Password" %>
+        <span class="icon is-small is-left">
+						<i class="fas fa-lock"></i>
+				</span>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.label :password_confirmation, class: "label" %>
+      <div class="control has-icons-left">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", placeholder: "Confirm Password" %>
+        <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+        </span>
+      </div>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "button is-light" %>
     </div>
   <% end %>
 
