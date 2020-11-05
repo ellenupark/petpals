@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     before_action :set_event, only: [:accept, :decline, :destroy, :show]
-    before_action :redirect_if_not_event_owner
+    before_action :redirect_if_not_event_owner, only: [:show]
 
     def new
         redirect_if_no_pets
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
         if @event.save
             redirect_to pet_event_path(@event.pets.first.id, @event.id)
         else
-            render "new"
+            redirect_to new_pet_event_path(params[:event][:pet_id]), alert: "Failed to create event: #{@event.errors.full_messages.to_sentence}"
         end
     end
 
