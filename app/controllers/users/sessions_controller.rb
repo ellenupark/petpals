@@ -14,6 +14,7 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   def show
+    redirect_if_not_logged_in(new_user_session_path, "You need to sign in or sign up before continuing.")
     @user = User.find(params[:id])
     @pets = @user.pets
   end

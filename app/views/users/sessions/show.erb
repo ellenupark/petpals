@@ -1,88 +1,112 @@
 <section class="section default">
-    <div class="columns">
-        <div class="column is-one-third">
-            <div class="center-content">
-                <h3 class="title is-3">Welcome <%= current_user.username.capitalize %></h2>
-                <p>Joined <%= current_user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
-                <p>
-                    <% if !current_user.city.empty? %>
-                        <%= current_user.city.titleize %>, 
+    <% if @user == current_user %>
+        <div class="columns">
+            <div class="column is-one-third">
+                <div class="center-content">
+                    <h3 class="title is-3">Welcome <%= @user.username.capitalize %></h2>
+                    <p>Joined <%= @user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
+                    <p>
+                        <% if !@user.city.empty? %>
+                            <%= @user.city.titleize %>, 
+                        <% end %>
+                        <%= @user.state %>
+                    </p><br>
+                    <% if @user.city.empty? %>
+                        <p class="notify">Complete profile so dog owners can find you!</p>
+                        <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing is-danger is-light" %><br>
+                    <% else %>
+                        <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing " %><br>
                     <% end %>
-                    <%= current_user.state %>
-                </p><br>
-                <% if current_user.city.empty? %>
-                    <p class="notify">Complete profile so dog owners can find you!</p>
-                    <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing is-danger is-light" %><br>
-                <% else %>
-                    <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing " %><br>
-                <% end %>
-                <%= link_to "Add Pet", new_pet_path, class: "is-info is-light button button-spacing" %>
-            </div>
-            <div class="profile-about center-content">
-                <% if !current_user.pets.empty? %>
-                    <h4 class="title is-4">Your Pets</h3>
-                    <% @pets.each do | pet | %>
-                        <div>
-                            <%= link_to pet.name, pet_path(pet.id), class: "bold-font" %><br>
-                            <%= link_to image_tag(pet.avatar, style: "border-radius: 100%; max-width: 150px"), pet_path(pet.id) %><br>
-                        </div>
-                    <% end %>
-                <% end %>
-            </div>
-        </div>
-        <div class="column">
-            <div class="columns is-mobile">
-                <div class="column center-content">
-                    <h3 class="title is-3">Upcoming Events</h3>
-                    <% if !current_user.confirmed_events.empty? %>
-                        <% current_user.confirmed_events.each do | event | %>
+                    <%= link_to "Add Pet", new_pet_path, class: "is-info is-light button button-spacing" %>
+                </div>
+                <div class="profile-about center-content">
+                    <% if !@user.pets.empty? %>
+                        <h4 class="title is-4">Your Pets</h3>
+                        <% @pets.each do | pet | %>
                             <div>
-                                <% if event.host_pet.user == current_user %>
-                                    <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
-                                <% else %>
-                                    <p>Playdate with <%= event.pets.first.name %> and <%= event.host_pet.name %></p>
-                                <% end %>
-                                <p><%= event.date.strftime("%B %eth, %Y at %l:%M%p") %></p>
-                                <%= link_to "View", event_path(event), class: "button is-small is-light" %>
-                                <%= link_to "Cancel", event_path(event), method: :delete, class: "button is-small is-light", data: { confirm: "Are you sure?" } %>
+                                <%= link_to pet.name, pet_path(pet.id), class: "bold-font" %><br>
+                                <%= link_to image_tag(pet.avatar, style: "border-radius: 100%; max-width: 150px"), pet_path(pet.id) %><br>
                             </div>
-                            <br>
                         <% end %>
-                    <% else %>
-                        <p>None scheduled.</p>
-                        <%= link_to "Find Playmate?", pets_path %>
                     <% end %>
-                    <div class="align-bottom">
-                        <%= link_to "History", events_history_path, class: "button is-small is-light" %>  
-                    </div>
                 </div>
-
-                <div class="column center-content">
-                    <h3 class="title is-3">New Event Invites</h3>
-                    <% if !current_user.unconfirmed_attendee_events.empty? %>
-                        <% current_user.unconfirmed_attendee_events.each do | event | %>
-                            <article class="message is-danger">
-                                <div class="message-header">
-                                    <p><%= event.host.username.capitalize %> has invited <%= event.pets.first.name.capitalize %> to the following <%= link_to "Playdate", event_path(event) %> </p>
+            </div>
+            <div class="column">
+                <div class="columns is-mobile">
+                    <div class="column center-content">
+                        <h3 class="title is-3">Upcoming Events</h3>
+                        <% if !@user.confirmed_events.empty? %>
+                            <% @user.confirmed_events.each do | event | %>
+                                <div>
+                                    <% if event.host_pet.user == @user %>
+                                        <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
+                                    <% else %>
+                                        <p>Playdate with <%= event.pets.first.name %> and <%= event.host_pet.name %></p>
+                                    <% end %>
+                                    <p><%= event.date.strftime("%B %eth, %Y at %l:%M%p") %></p>
+                                    <%= link_to "View", event_path(event), class: "button is-small is-light" %>
+                                    <%= link_to "Cancel", event_path(event), method: :delete, class: "button is-small is-light", data: { confirm: "Are you sure?" } %>
                                 </div>
-                                <div class="message-body">
-                                    <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                                    <p>Playdate with <%= event.host_pet.name %></p>
-
-                                    <p><%= event.host.username.capitalize %> left the following message: <%= event.invites.first.message %></p>
-                                    <%= link_to "Accept", "/events/#{event.id}/accept", method: :patch, class: "button is-success is-small is-light" %>
-                                    <%= link_to "Decline", event_path(event), method: :delete, class: "button is-small is-light" %>
-                                </div>
-                            </article>
+                                <br>
+                            <% end %>
+                        <% else %>
+                            <p>None scheduled.</p>
+                            <%= link_to "Find Playmate?", pets_path %>
                         <% end %>
-                    <% else %>
-                        <p>No invites yet.</p>
-                    <% end %>
-                    <div class="align-bottom">
-                        <%= link_to "Sent Invites", events_pending_path, class: "button is-small is-light" %>  
+                        <div class="align-bottom">
+                            <%= link_to "History", events_history_path, class: "button is-small is-light" %>  
+                        </div>
+                    </div>
+
+                    <div class="column center-content">
+                        <h3 class="title is-3">New Event Invites</h3>
+                        <% if !@user.unconfirmed_attendee_events.empty? %>
+                            <% @user.unconfirmed_attendee_events.each do | event | %>
+                                <article class="message is-danger">
+                                    <div class="message-header">
+                                        <p><%= event.host.username.capitalize %> has invited <%= event.pets.first.name.capitalize %> to the following <%= link_to "Playdate", event_path(event) %> </p>
+                                    </div>
+                                    <div class="message-body">
+                                        <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+                                        <p>Playdate with <%= event.host_pet.name %></p>
+
+                                        <p><%= event.host.username.capitalize %> left the following message: <%= event.invites.first.message %></p>
+                                        <%= link_to "Accept", "/events/#{event.id}/accept", method: :patch, class: "button is-success is-small is-light" %>
+                                        <%= link_to "Decline", event_path(event), method: :delete, class: "button is-small is-light" %>
+                                    </div>
+                                </article>
+                            <% end %>
+                        <% else %>
+                            <p>No invites yet.</p>
+                        <% end %>
+                        <div class="align-bottom">
+                            <%= link_to "Sent Invites", events_pending_path, class: "button is-small is-light" %>  
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    <% else %>
+        <div class="center-content">
+            <h3 class="title is-3"><%= @user.username.capitalize %>'s Profile</h3>
+            <p>Joined <%= @user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
+            <p>
+                <% if !@user.city.empty? %>
+                    <%= @user.city.titleize %>, 
+                <% end %>
+                <%= @user.state %>
+            </p>
+            <br>
+        </div>
+        <div class= "center-content">
+            <% if !@user.pets.empty? %>
+                <% @pets.each do | pet | %>
+                    <div class="inline">
+                        <%= link_to pet.name, pet_path(pet.id), class: "bold-font" %><br>
+                        <%= link_to image_tag(pet.avatar, style: "border-radius: 100%; max-width: 200px"), pet_path(pet.id) %><br>
+                    </div>
+                <% end %>
+            <% end %>
+        </div>
+    <% end %>
 </section>

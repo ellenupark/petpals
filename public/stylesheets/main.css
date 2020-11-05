@@ -75,6 +75,8 @@ body {
     padding-top: 20px;
 }
 
+
+
 /* --------- NAV BAR --------- */
 
 .navbar {
@@ -115,12 +117,16 @@ body {
 }
 
 .index-element {
-    display: inline-block;
     padding: 30px;
 }
 
 .index-element img{
     max-height: 200px;
+}
+
+.inline {
+    display: inline-block;
+    padding: 5px;
 }
 
 /* --------- USER PROFILE PAGE --------- */

@@ -31,13 +31,12 @@ class ApplicationController < ActionController::Base
         redirect_to root_path, alert: "This is not yours to view."
       end
     end
-    
-  #   def redirect_if_not_logged_in(route, type, message)
-  #     if !logged_in?
-  #       flash[type] = message
-  #       redirect route
-  #     end
-  #   end
+
+    def redirect_if_not_logged_in(route, message)
+      if !user_signed_in?
+        redirect_to route, alert: message
+      end
+    end
     
   #   def redirect_if_logged_in
   #     if logged_in?
