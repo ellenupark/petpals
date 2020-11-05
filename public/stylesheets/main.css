@@ -48,6 +48,18 @@ body {
     margin-top: 30px;
 }
 
+.sub-header {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.in-align {
+    display: flex;
+    width: 65%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
 /* --------- NAV BAR --------- */
 
 .navbar {
@@ -155,6 +167,16 @@ body {
     height: 375px;
     margin: 10px;
     text-align: center;
+}
+
+.profile-card-small {
+    border-radius: 10px;
+    background: #E4FDE1;
+    width: 280px;
+    height: 300px;
+    margin: 0 auto;
+    text-align: center;
+    flex: 1;
 }
 
 .card-img {
