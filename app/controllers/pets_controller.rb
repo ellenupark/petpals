@@ -14,7 +14,7 @@ class PetsController < ApplicationController
       redirect_to(pets_path, alert: "Empty field!") and return  
     else  
       @parameter = params[:search].downcase  
-      @pets = Pet.joins(:user).where("lower(city) LIKE :search OR lower(breed) LIKE :search", search: @parameter)
+      @pets = Pet.joins(:user).where("lower(city) LIKE :search OR lower(breed) LIKE :search OR lower(weight) LIKE :search", search: "%#{@parameter}%")
 
       render 'index'
     end  
