@@ -71,6 +71,10 @@ body {
     color: red;
 }
 
+.top-padding {
+    padding-top: 20px;
+}
+
 /* --------- NAV BAR --------- */
 
 .navbar {
