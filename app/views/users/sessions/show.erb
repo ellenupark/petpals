@@ -1,12 +1,12 @@
 <section class="section default">
     <div class="columns">
-        <div class="column is-one-quarter">
+        <div class="column is-one-third">
             <div class="center-content">
                 <h3 class="title is-3">Welcome <%= current_user.username.capitalize %></h2>
                 <p>Member since <%= current_user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
-
+                <p><%= current_user.city.capitalize %>, <%= current_user.state %></p><br>
                 <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing" %><br>
-                <%= link_to "Add Pet", new_pet_path, class: "button button-spacing" %>
+                <%= link_to "Add Pet", new_pet_path, class: "is-info is-light button button-spacing" %>
             </div>
             <div class="profile-about center-content">
                 <% if !current_user.pets.empty? %>
@@ -38,22 +38,12 @@
                         <p>None scheduled.</p>
                         <%= link_to "Find Playmate?", pets_path %>
                     <% end %>
-                    <br>
-                    <h5 class="title is-5">View Past Events?</h5>
-                    <%= link_to "Past Events", events_past_path %>
+                    <div class="align-bottom">
+                        <%= link_to "History", events_past_path, class: "button is-small is-light" %>  
+                    </div>
                 </div>
 
                 <div class="column center-content">
-                    <% if !current_user.unconfirmed_host_events.empty? %>
-                        <h3 class="title is-3">Awaiting response</h3>
-                        <% current_user.unconfirmed_host_events.each do | event | %>
-                            <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                            <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
-                            <%= link_to "Cancel Invite", event_path(event), method: :delete %>
-                        <% end %>
-                    <% end %>
-                </div>
-                <div class="column is-half center-content">
                     <h3 class="title is-3">New Event Invites</h3>
                     <% if !current_user.unconfirmed_attendee_events.empty? %>
                         <% current_user.unconfirmed_attendee_events.each do | event | %>
@@ -74,6 +64,9 @@
                     <% else %>
                         <p>No invites yet.</p>
                     <% end %>
+                    <div class="align-bottom">
+                        <%= link_to "Sent Invites", events_pending_path, class: "button is-small is-light" %>  
+                    </div>
                 </div>
             </div>
         </div>
