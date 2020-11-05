@@ -4,6 +4,8 @@ class Event < ApplicationRecord
 
     accepts_nested_attributes_for :invites
 
+    scope :past_events, lambda { where('date <= ?', Time.now ).where('accepted = ?', true) }
+
     def host
         pet = Pet.find_by_id(self.host_pet_id)
         User.find_by_id(pet.user.id)

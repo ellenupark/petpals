@@ -1,24 +1,19 @@
 <section class="section default">
-    <div>
-        <%= form_tag(search_page_path, :method => "get") do %>  
-          <div class="field has-addons">  
-            <div class="control">
-              <%= search_field_tag :search, params[:search], placeholder: "Search by City", class: "input" %>  
-            </div>
-            <div class="control has-icons-right">  
-              <%= button_tag "", class: "button is-info", :name => nil %>  
-              <span class="icon is-right">
-                <i class="fas fa-search"></i>
-              </span>
-            </div>  
-          </div>  
-        <% end %>
-    </div>
-
-
-
-
-
+  <div class="search-bar">
+    <%= form_tag(search_page_path, :method => "get") do %>  
+      <div class="field has-addons">  
+        <div class="control is-expanded">
+          <%= search_field_tag :search, params[:search], placeholder: "Search by City or Breed", class: "input" %>  
+        </div>
+        <div class="control has-icons-right">  
+          <%= button_tag "", class: "button is-info", :name => nil %>  
+          <span class="icon is-right">
+            <i class="fas fa-search"></i>
+          </span>
+        </div>  
+      </div>  
+    <% end %>
+  </div>
 
     <div class="columns is-mobile is-multiline is-centered">
         <% @pets.each do | pet | %>

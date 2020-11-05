@@ -29,6 +29,16 @@ body {
     font-size: 12px;
 }
 
+.align-right {
+    text-align: right;
+}
+
+.search-bar {
+    width: 33%;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
 /* --------- NAV BAR --------- */
 
 .navbar {

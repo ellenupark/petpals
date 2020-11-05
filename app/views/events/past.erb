@@ -1,0 +1,15 @@
+<section class="section default">
+    <% if @events.empty? %>
+        <h1>No past events.</h1>
+    <% end %>
+    <% @events.each do | event | %>
+         <ul>
+            <li>Date: <%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></li>
+            <% if event.pets.first.user == current_user %>
+                <li>Playdate with <%= event.pets.first.name %> and <%= Pet.find_by_id(event.host_pet_id).name %></li>
+            <% else %>
+                <li>Playdate with <%= Pet.find_by_id(event.host_pet_id).name %> and <%= event.pets.first.name %></li>
+            <% end %>
+        </ul> 
+    <% end %>
+</section>

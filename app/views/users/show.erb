@@ -27,10 +27,10 @@
                     <% if !current_user.confirmed_events.empty? %>
                         <% current_user.confirmed_events.each do | event | %>
                             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                            <% if Pet.find_by_id(event.host_pet_id).user == current_user %>
-                                <p>Playdate with <%= event.pets.first.name %></p>
+                            <% if event.host_pet.user == current_user %>
+                                <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
                             <% else %>
-                                <p>Playdate with <%= event.host_pet.name %></p>
+                                <p>Playdate with <%= event.pets.first.name %> and <%= event.host_pet.name %></p>
                             <% end %>
                             <%= link_to "Cancel", event_path(event), method: :delete %>
                         <% end %>
@@ -38,6 +38,9 @@
                         <p>None scheduled.</p>
                         <%= link_to "Find Playmate?", pets_path %>
                     <% end %>
+                    <br>
+                    <h5 class="title is-5">View Past Events?</h5>
+                    <%= link_to "Past Events", events_past_path %>
                 </div>
 
                 <div class="column center-content">

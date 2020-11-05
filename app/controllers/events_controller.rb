@@ -30,6 +30,10 @@ class EventsController < ApplicationController
         end
     end
 
+    def past 
+        @events = Event.past_events.select { | event | event.host == current_user || event.pets.first.user == current_user }
+    end
+
     def decline
         binding.pry
         redirect_to event_path(params[:id])

@@ -1,18 +1,17 @@
 <section class="section default">
     <div class="columns">
-        <div class="column">
+        <div class="column align-right">
             <% if @pet.avatar.attached? %>
-                <%= image_tag(@pet.avatar, style: "max-width: 250px") %>
+                <%= image_tag(@pet.avatar, style: "max-width: 400px") %>
             <% end %>
         </div>
 
         <div class="column">
-            <ul>
-                <li><%= @pet.name %></li>
-                <li><%= @pet.breed %></li>
-                <li><%= @pet.weight %></li>
-                <li><%= @pet.gender %></li>
-            </ul>
+            <p>Name: <%= @pet.name %></p>
+            <p>Breed: <%= @pet.breed %></p>
+            <p>Weight: <%= @pet.weight %></p>
+            <p>Gender: <%= @pet.gender %></p>
+            <p>Location: <%= @pet.user.city.capitalize %>, <%= @pet.user.state %></p>
             <br>
 
             <% if @pet.user == current_user %>
