@@ -14,10 +14,10 @@
             <p>Location: <%= @pet.user.city.capitalize %>, <%= @pet.user.state %></p>
             <% if @pet.user == current_user %>
                 <%= link_to "Edit", edit_pet_path(@pet), class: "button is-small is-light align-bottom" %>
-                <%= link_to 'Back', user_path(current_user.id), class: "button is-small is-light align-bottom"%><br>
+                <%= link_to 'Back', :back, class: "button is-small is-light align-bottom"%><br>
             <% else %>
                 <%= link_to "Invite", new_pet_event_path(@pet.id), class: "button is-small is-light align-bottom" %>
-                <%= link_to 'Back', pets_path, class: "button is-small is-light align-bottom"%><br>
+                <%= link_to 'Back', :back, class: "button is-small is-light align-bottom"%><br>
             <% end %>
 
             <% if @pet.user == current_user %>

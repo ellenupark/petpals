@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get '/users/:id', to: 'users/sessions#show', as: 'user'
   end
   
-  resources :events, only: [:destroy, :create]
+  resources :events, only: [:destroy, :create, :show]
   
   get '/events/history', to: 'events#history'
   get '/events/pending', to: 'events#pending'
