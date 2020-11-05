@@ -26,18 +26,41 @@ Specs:
     - User Model
         - validates :username, presence: true
         - validates :username, uniqueness: { case_sensitive: false }
-
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include signup
-- [ ] Include login
-- [ ] Include logout
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+    - Event Model
+        - validates :date, :address_line_one, :city, :state, :zip, presence: true
+    - Invite Model
+        - validates :message, presence: true
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+    - Event.past_events, http://localhost:3000/events/past_events
+        -  scope :past_events, lambda { where('date <= ?', Time.now ).where('accepted = ?', true) }
+- [x] Include signup
+    - Implemented through devise
+    - registrations#new
+    - /users/sign_up
+- [x] Include login
+    - Implemented through devise
+    - users/sessions#new
+    - /users/sign_in
+- [x] Include logout
+    - Implemented through devise
+    - users/sessions#destroy
+    - /users/sign_out
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+    - Implemented through Devise/OmniAuth
+    - CallbacksController < Devise::OmniauthCallbacksController
+    - User Model
+        - self.from_omniauth(auth) method (takes provider data and uid)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
+    - Show Page
+        - /pets/:pet_id/events/:id
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+    - New Form
+        - /pets/:pet_id/events/new
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+    - Flash messages enabled for all forms
 
 Confirm:
-- [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] The application is pretty DRY
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate

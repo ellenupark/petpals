@@ -12,11 +12,12 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/:id', to: 'users/sessions#show', as: 'user'
   end
+
+  get '/events/past_events', to: 'events#past_events'
+  get '/events/pending', to: 'events#pending'
   
   resources :events, only: [:destroy, :create, :show]
   
-  get '/events/history', to: 'events#history'
-  get '/events/pending', to: 'events#pending'
   patch '/events/:id/accept', to: 'events#accept'
   patch '/events/:id/decline', to: 'events#decline'
 
