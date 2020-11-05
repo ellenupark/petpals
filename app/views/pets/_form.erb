@@ -1,24 +1,44 @@
-<% if @pet.errors.any? %>
-        <h5 class="error"><%= @pet.errors.full_messages.to_sentence %></h5>
-<% end %>
+<div class="form-width">
+    <% if @pet.errors.any? %>
+            <h5 class="error"><%= @pet.errors.full_messages.to_sentence %></h5>
+    <% end %>
 
 
-<%= form_with model: @pet, local: true do |f| %>
-    <%= f.label :name, "Name" %><br>
-    <%= f.text_field :name %><br>
+    <%= form_with model: @pet, local: true do |f| %>
+        <div class="field">
+            <%= f.label :name, "Name", class: "label" %>
 
-    <%= f.label :breed, "Breed" %><br>
-    <%= f.text_field :breed %><br>
+            <div class="control">
+                <%= f.text_field :name, class: "input" %>
+            </div>
+        </div>
 
+        <div class="field">
+            <%= f.label :breed, "Breed", class: "label" %>
+            <div class="control">
+                <%= f.text_field :breed, class: "input" %>
+            </div>
+        </div>
 
-    <%= f.label :weight, "Weight" %><br>
-    <%= f.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'] %><br>
+        <div class="field">
+            <%= f.label :weight, "Weight", class: "label" %>
+            <div class="select">
+                <%= f.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'], class: "input" %>
+            </div>
+        </div>
 
-    <%= f.label :gender, "Gender" %><br>
-    <%= f.select :gender, ['Male', 'Female'] %><br>
+        <div class="field">
+            <%= f.label :gender, "Gender", class: "label" %>
+            <div class="select">
+                <%= f.select :gender, ['Male', 'Female'], class: "input" %>
+            </div>
+        </div>
 
-    <%= f.label :avatar, "Profile Image" %><br>
-    <%= f.file_field :avatar %><br>
+        <div class="field">
+            <%= f.label :avatar, "Profile Image", class: "label" %>
+            <%= f.file_field :avatar %>
+        </div>
 
-    <%= f.submit %>
-<% end %> 
+        <%= f.submit class: "button is-light" %>
+    <% end %> 
+</div>
