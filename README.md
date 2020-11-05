@@ -1,24 +1,32 @@
-# README
+# Pet Pals - Rails App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails application designed for users to find and arrange play dates for their dogs.
+* Users sign up to create an account.
+* Once logged in to the app, users can create their pets, search for dogs, and schedule play dates.
+* Users can edit and delete their account and pet data.
 
-Things you may want to cover:
+## Installation & Setup
 
-* Ruby version
+* Clone the Pet Pals repository onto your computer.
+  * Navigate to 'https://github.com/ellenupark/petpals'.
+  * Click on the green **Clone** button.
+  * Click on **HTTPS** if not already selected.
+  * Click the **clipboard icon** to copy the URL.
+  * In your terminal, type `git clone` then paste the copied URL.
+* Type `cd petpals` to change the current working directory.
+* Run `bundle install` to load the Ruby gems and dependencies.
 
-* System dependencies
+## Usage
 
-* Configuration
+* Type `rails s` in your terminal to launch the server and run the Pet Pals application on your local machine
+* Open your browser and navigate to http://localhost:3000/
+* Once the home page loads, click **Sign Up** to create a new user account and login
+  * Or click **Log In** to log in as an existing user from one of the users in 'db/seeds.rb'
+> _To stop the server and exit, type `CTRL + C` in your terminal_
 
-* Database creation
+## Contributing
 
-* Database initialization
+Bug reports and pull requests are welcome on GitHub at https://github.com/ellenupark/petpals.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
