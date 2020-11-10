@@ -61,11 +61,3 @@ diluc.save
 # Events/Invites
 event_one = Event.create(date: "2020-11-18 12:45:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: false)
 event_one.invites.create(pet_id: 5, message: "Hello!")
-
-
-
-# Invites
-
-
-
-

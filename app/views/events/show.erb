@@ -1,8 +1,21 @@
 <section class="section default center-content">
     <% if @event.accepted == true %>
         <h2 class="title is-2">Upcoming Playdate</h2>
+        <div>
+            <%= link_to "Cancel", event_path(@event), method: :delete, class: "button is-small is-light", data: { confirm: "Are you sure?" } %><br>
+        </div><br>
     <% else %>
         <h2 class="title is-2">Playdate Pending Confirmation</h2>
+        <% if @event.host == current_user %>
+            <div>
+                <%= link_to "Cancel Invite", event_path(@event), method: :delete, class: "button is-small is-light", data: { confirm: "Are you sure?" } %>
+            </div><br>
+        <% else %>
+            <div>
+                <%= link_to "Accept", "/events/#{@event.id}/accept", method: :patch, class: "button is-success is-small is-light" %>
+                <%= link_to "Decline", event_path(@event), method: :delete, class: "button is-small is-light" %>
+            </div><br>
+        <% end %>
     <% end %>
 
     <div class="info">
