@@ -21,15 +21,18 @@ class User < ApplicationRecord
   end
 
   def confirmed_events
-    Event.joins(:invites).joins(:pets).where(host_pet_id: pet_ids_as_array).where(accepted: true).or(Event.where(accepted: true).joins(:invites).joins(:pets).where(pets: { user_id: self.id })).uniq
+    events = Event.joins(:invites).joins(:pets).where(host_pet_id: pet_ids_as_array).where(accepted: true).or(Event.where(accepted: true).joins(:invites).joins(:pets).where(pets: { user_id: self.id })).uniq
+    events.select { | event | Event.past_events.include?(event) == false }
   end
 
   def unconfirmed_attendee_events
-    Event.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: self.id }).uniq
+    events = Event.where(accepted: false).joins(:invites).joins(:pets).where(pets: { user_id: self.id }).uniq
+    events.select { | event | Event.past_events.include?(event) == false }
   end
 
   def unconfirmed_host_events
-    Event.where(host_pet_id: pet_ids_as_array).where(accepted: false)
+    events = Event.where(host_pet_id: pet_ids_as_array).where(accepted: false)
+    events.select { | event | Event.past_events.include?(event) == false }
   end
 
   def pet_ids_as_array
