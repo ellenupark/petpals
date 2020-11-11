@@ -147,16 +147,18 @@ body {
 /* --------- FORMS --------- */
 
 .form-width {
-    padding: 0px 250px;
+    max-width: 400px;
+    margin: 0 auto;    
 }
 
 
 /* --------- FLASH ERROR MESSAGES --------- */
 
 .flash {
-        margin-top: 65px;
+        /* margin-top: 65px;
         z-index: 100;
-        width: 600px;
+        width: 100%;
+        min-width: 225px;
         padding: 5px;
         font-weight: bold;
         background:#ddd;
@@ -166,7 +168,16 @@ body {
         align-content: center;
         position: absolute;
         font-size: 13px;
-        left: 27%;
+        left: 27%; */
+
+        top: 75px;
+        z-index: 100;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+
 }
 
 .notice {
