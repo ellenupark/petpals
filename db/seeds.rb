@@ -59,10 +59,21 @@ diluc.avatar.attach(io: File.open('./public/seed_images/cane-corso.jpg'), filena
 diluc.save
 
 # Events/Invites - Pending
-event_one = Event.create(date: "2020-11-18 12:45:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: false)
-event_one.invites.create(pet_id: 5, message: "Hello!")
+pending_event_one = Event.create(date: "2020-11-18 12:45:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: false)
+pending_event_one.invites.create(pet_id: 5, message: "Hello!")
+
+pending_event_two = Event.create(date: "2020-11-20 12:00:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Seattle", state: "WA", zip: Faker::Address.zip, host_pet_id: 11, accepted: false)
+pending_event_two.invites.create(pet_id: 8, message: "Hello!")
+
+pending_event_three = Event.create(date: "2020-11-21 14:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 6, accepted: false)
+pending_event_three.invites.create(pet_id: 1, message: "Hello!")
+
 
 # Events/Invites - Confirmed
-event_two = Event.create(date: "2020-11-17 19:21:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 1, accepted: true)
-event_two.invites.create(pet_id: 3, message: "Hello!")
+confirmed_event_one = Event.create(date: "2020-11-17 19:21:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 1, accepted: true)
+confirmed_event_one.invites.create(pet_id: 3, message: "Hello!")
+
+confirmed_event_two = Event.create(date: "2020-11-13 13:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 3, accepted: true)
+confirmed_event_two.invites.create(pet_id: 10, message: "Hello!")
+
 
