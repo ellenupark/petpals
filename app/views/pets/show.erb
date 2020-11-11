@@ -1,9 +1,7 @@
 <section class="section default">
     <div class="columns">
-        <div class="column align-right">
-            <% if @pet.avatar.attached? %>
-                <%= image_tag(@pet.avatar, style: "max-width: 400px") %>
-            <% end %>
+        <div class="column align-right profile-img">
+            <%= image_tag(@pet.avatar, style: "max-width: 400px") %>
         </div>
 
         <div class="column">
