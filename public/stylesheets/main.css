@@ -75,7 +75,9 @@ body {
     padding-top: 20px;
 }
 
-
+.button-spacing {
+    padding-top: 3px;
+}
 
 /* --------- NAV BAR --------- */
 

@@ -27,7 +27,7 @@ class EventsController < ApplicationController
         if @event
             @event.accepted = true
             @event.save
-            redirect_to pet_event_path(@event.pets.first.id, @event.id)
+            redirect_to pet_event_path(@event.pets.first.id, @event.id), notice: "Event Confirmed!"
         else
             redirect_to user_path(current_user)
         end

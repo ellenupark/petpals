@@ -14,7 +14,7 @@ ruth = User.create(email: "ruth@ruth.com", username: "ruth", city: "Seattle", st
 
 # Pets - Brooklyn
 sumi = ellen.pets.create(name: "Sumi", breed: "Pomsky", gender: "Male", weight: "Medium 11-23lbs", birthdate: "2020-05-06")
-sumi.avatar.attach(io: File.open('./public/seed_images/sumi.jpeg'), filename: 'sumi.jpg')
+sumi.avatar.attach(io: File.open('./public/seed_images/IMG_4170.jpg'), filename: 'IMG_4170.jpg')
 sumi.save
 
 bianca = ellen.pets.create(name: "Bianca", breed: "Bichon Frise", gender: "Female", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
@@ -58,6 +58,11 @@ diluc = ruth.pets.create(name: "Diluc", breed: "Cane Corso", gender: "Male", wei
 diluc.avatar.attach(io: File.open('./public/seed_images/cane-corso.jpg'), filename: 'cane-corso.jpg')
 diluc.save
 
-# Events/Invites
+# Events/Invites - Pending
 event_one = Event.create(date: "2020-11-18 12:45:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: false)
 event_one.invites.create(pet_id: 5, message: "Hello!")
+
+# Events/Invites - Confirmed
+event_two = Event.create(date: "2020-11-17 19:21:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 1, accepted: true)
+event_two.invites.create(pet_id: 3, message: "Hello!")
+
