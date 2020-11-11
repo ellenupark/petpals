@@ -58,7 +58,8 @@ class PetsController < ApplicationController
   end
   
   def destroy
-
+    @pet.destroy
+    redirect_to user_path(current_user.id), notice: "Successfully deleted pet."
   end
   
   private

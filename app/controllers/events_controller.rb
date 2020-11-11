@@ -42,7 +42,6 @@ class EventsController < ApplicationController
     end
 
     def decline
-        binding.pry
         redirect_to event_path(params[:id])
     end
 
