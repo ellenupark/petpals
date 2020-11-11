@@ -1,11 +1,16 @@
 <section class="section default">
     <% if @events.empty? %>
-        <h1>No pending invitations.</h1>
+        <h2 class="title is-2">No pending invitations.</h2>
     <% end %>
     <% @events.each do | event | %>
-        <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-        <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
-        <%= link_to "View", event_path(event), class: "button is-success is-small is-light" %>
-        <%= link_to "Cancel Invite", event_path(event), method: :delete, class: "button is-small is-light"%>
+        <div class="center-content">
+            <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+            <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
+        </div>
+        <div class="center-content">
+            <%= link_to "View", event_path(event), class: "button is-success is-small is-light" %>
+            <%= link_to "Cancel Invite", event_path(event), method: :delete, class: "button is-small is-light"%>
+        </div>
+        <br>
     <% end %>
 </section>
