@@ -67,4 +67,13 @@ class EventsController < ApplicationController
         params.require(:event).permit(:date, :address_line_one, :address_line_two, :city, :state, :zip, :host_pet_id, :accepted,
         invites_attributes: [:message])
     end
+
+    def redirect_if_not_event_owner
+        @event = Event.find_by_id(params[:id])
+        if !@event
+          redirect_to root_path, alert: "Event does not exist."
+        elsif @event.host_pet.user != current_user && @event.pets.first.user != current_user
+          redirect_to root_path, alert: "This is not yours to view."
+        end
+    end
 end

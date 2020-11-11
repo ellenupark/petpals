@@ -7,6 +7,7 @@
         </div>
 
         <div class="column">
+            <h3 class="title is-3"><%= @pet.name %></h3>
             <p>Name: <%= @pet.name %></p>
             <p>Breed: <%= @pet.breed %></p>
             <p>Weight: <%= @pet.weight %></p>
@@ -24,10 +25,10 @@
 
             <% if @pet.user == current_user %>
                 <% if !current_user.confirmed_events.empty? %>
-                    <h3 class="title is-3 top-padding center-content"><%= @pet.name %>'s Upcoming Events</h3>
+                    <h3 class="title is-3 top-padding">Upcoming Events</h3>
                     <% current_user.confirmed_events.each do | event | %>
                         <% if event.pets.first == @pet || event.host_pet == @pet %>
-                            <div class="center-content">
+                            <div>
                                 <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
                                 <% if Pet.find_by_id(event.host_pet_id).user == current_user %>
                                     <p>Playdate with <%= event.pets.first.name %></p>
@@ -36,6 +37,12 @@
                                 <% end %>
                                 <%= link_to "View", pet_event_path(params[:id], event.id), class: "button is-small is-light is-primary button-spacing" %>
                             </div><br>
+                        <% else %>
+                            <div>
+                                <p>None scheduled.</p>
+                                <%= link_to "Find Playmate?", pets_path %>
+                            </div>
+                            <% break %>
                         <% end %>
                     <% end %>
                 <% end %>

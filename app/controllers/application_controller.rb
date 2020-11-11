@@ -24,14 +24,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def redirect_if_not_event_owner
-      if !@event
-        redirect_to root_path, alert: "Event does not exist."
-      elsif @event.host_pet.user != current_user && @event.pets.first.user != current_user
-        redirect_to root_path, alert: "This is not yours to view."
-      end
-    end
-
     def redirect_if_not_logged_in(route, message)
       if !user_signed_in?
         redirect_to route, alert: message
