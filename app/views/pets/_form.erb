@@ -35,6 +35,13 @@
         </div>
 
         <div class="field">
+            <%= f.label :birthdate, class: "label" %>
+            <div class="control"> 
+                <%= f.date_field :birthdate, class: "input" %>
+            </div>
+        </div>
+
+        <div class="field">
             <%= f.label :avatar, "Profile Image", class: "label" %>
             <%= f.file_field :avatar %>
         </div>

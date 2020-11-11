@@ -13,7 +13,7 @@ michael = User.create(email: "michael@michael.com", username: "michael", city: "
 ruth = User.create(email: "ruth@ruth.com", username: "ruth", city: "Seattle", state: "WA", password: "password")
 
 # Pets - Brooklyn
-sumi = ellen.pets.create(name: "Sumi", breed: "Pomsky", gender: "Male", weight: "Medium 11-23lbs")
+sumi = ellen.pets.create(name: "Sumi", breed: "Pomsky", gender: "Male", weight: "Medium 11-23lbs", birthdate: "2020-05-06")
 sumi.avatar.attach(io: File.open('./public/seed_images/sumi.jpeg'), filename: 'sumi.jpg')
 sumi.save
 

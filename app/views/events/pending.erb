@@ -5,6 +5,7 @@
     <% @events.each do | event | %>
         <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
         <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
-        <%= link_to "Cancel Invite", event_path(event), method: :delete %>
+        <%= link_to "View", event_path(event), class: "button is-success is-small is-light" %>
+        <%= link_to "Cancel Invite", event_path(event), method: :delete, class: "button is-small is-light"%>
     <% end %>
 </section>
