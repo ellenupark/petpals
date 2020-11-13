@@ -37,6 +37,8 @@ gem 'omniauth-github'
 
 gem 'pry'
 
+gem 'faker'
+
 # gem "mini_magick"
 
 gem "image_processing", "~> 1.0"
