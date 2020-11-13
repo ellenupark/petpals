@@ -13,48 +13,48 @@ michael = User.create(email: "michael@michael.com", username: "michael", city: "
 ruth = User.create(email: "ruth@ruth.com", username: "ruth", city: "Seattle", state: "WA", password: "password")
 
 # Pets - Brooklyn
-sumi = ellen.pets.create!(name: "Sumi", breed: "Pomsky", gender: "Male", weight: "Medium 11-23lbs", birthdate: "2020-05-06")
+sumi = ellen.pets.create(name: "Sumi", breed: "Pomsky", gender: "Male", weight: "Medium 11-23lbs", birthdate: "2020-05-06")
 sumi.avatar.attach(io: File.open('./public/seed_images/IMG_4170.jpg'), filename: 'IMG_4170.jpg')
 sumi.save
 
-bianca = ellen.pets.new(name: "Bianca", breed: "Bichon Frise", gender: "Female", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+bianca = ellen.pets.create(name: "Bianca", breed: "Bichon Frise", gender: "Female", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 bianca.avatar.attach(io: File.open('./public/default-profile.jpg'), filename: 'default-profile.jpg')
 bianca.save
 
-spot = kyo.pets.new(name: "Spot", breed: "Dalmation", gender: "Male", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+spot = kyo.pets.create(name: "Spot", breed: "Dalmation", gender: "Male", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 spot.avatar.attach(io: File.open('./public/seed_images/dalmation.jpg'), filename: 'dalmation.jpg')
 spot.save
 
-toby = john.pets.new(name: "Toby", breed: "Shih Tzu", gender: "Male", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+toby = john.pets.create(name: "Toby", breed: "Shih Tzu", gender: "Male", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 toby.avatar.attach(io: File.open('./public/seed_images/shihtzu.jpeg'), filename: 'shihtzu.jpeg')
 toby.save
 
-aristotle = natalie.pets.new(name: "Aristotle", breed: "Poodle", gender: "Male", weight: "Large 24-45lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+aristotle = natalie.pets.create(name: "Aristotle", breed: "Poodle", gender: "Male", weight: "Large 24-45lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 aristotle.avatar.attach(io: File.open('./public/seed_images/poodle-1.jpg'), filename: 'poodle-1.jpg')
 aristotle.save
 
-snow = emily.pets.new(name: "Snow", breed: "Samoyed", gender: "Female", weight: "Large 24-45lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+snow = emily.pets.create(name: "Snow", breed: "Samoyed", gender: "Female", weight: "Large 24-45lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 snow.avatar.attach(io: File.open('./public/seed_images/samoyed-dogs-puppies-1.jpg'), filename: 'samoyed-dogs-puppies-1.jpg')
 snow.save
 
 # Pets - Seattle
-kiki = rachel.pets.new(name: "Kiki", breed: "Keeshond", gender: "Female", weight: "Large 24-45lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+kiki = rachel.pets.create(name: "Kiki", breed: "Keeshond", gender: "Female", weight: "Large 24-45lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 kiki.avatar.attach(io: File.open('./public/seed_images/keeshond.jpg'), filename: 'keeshond.jpg')
 kiki.save
 
-loki = adriana.pets.new(name: "Loki", breed: "Miniature Australian Shepherd", gender: "Male", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+loki = adriana.pets.create(name: "Loki", breed: "Miniature Australian Shepherd", gender: "Male", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 loki.avatar.attach(io: File.open('./public/seed_images/Australian-Shepherd.jpeg'), filename: 'Australian-Shepherd.jpeg')
 loki.save
 
-lucy = susan.pets.new(name: "Lucy", breed: "Golden Retriever", gender: "Female", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+lucy = susan.pets.create(name: "Lucy", breed: "Golden Retriever", gender: "Female", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 lucy.avatar.attach(io: File.open('./public/seed_images/keeshond.jpg'), filename: 'keeshond.jpg')
 lucy.save
 
-shishito = michael.pets.new(name: "Shishito", breed: "Chihuahua", gender: "Male", weight: 'XSmall 0-4lbs', birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+shishito = michael.pets.create(name: "Shishito", breed: "Chihuahua", gender: "Male", weight: 'XSmall 0-4lbs', birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 shishito.avatar.attach(io: File.open('./public/seed_images/chihuahua-portrait.jpg'), filename: 'chihuahua-portrait.jpg')
 shishito.save
 
-diluc = ruth.pets.new(name: "Diluc", breed: "Cane Corso", gender: "Male", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+diluc = ruth.pets.create(name: "Diluc", breed: "Cane Corso", gender: "Male", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 diluc.avatar.attach(io: File.open('./public/seed_images/cane-corso.jpg'), filename: 'cane-corso.jpg')
 diluc.save
 
