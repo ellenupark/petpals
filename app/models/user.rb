@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :pets
 
   def self.from_omniauth(auth)
+    binding.pry
     #from this array of data that is coming in, take provider and uid
     where(provider: auth.provider, uid: auth.uid).first_or_create do | user |
       user.provider = auth.provider
@@ -16,7 +17,6 @@ class User < ApplicationRecord
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      location ""
     end
   end
 
