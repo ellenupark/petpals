@@ -170,6 +170,12 @@ body {
         font-size: 13px;
         left: 27%; */
 
+        padding: 5px 30px;
+        font-weight: bold;
+        background:#ddd;
+        color:#666;
+        border:1px solid #ccc;
+        font-size: 13px;
         top: 75px;
         z-index: 100;
         position: absolute;
@@ -178,6 +184,20 @@ body {
 
 
 
+}
+
+#error_explanation {
+    padding: 5px 30px;
+    font-weight: bold;
+    font-size: 13px;
+    top: 75px;
+    z-index: 100;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:#F2DEDE;
+    color:#B94A48;
+    border:1px solid #EED3D7;
 }
 
 .notice {
@@ -238,4 +258,16 @@ footer.branding {
 
 .button-spacing {
     margin: 5px;
+}
+
+@media screen and (max-width: 600px) {
+    .in-align {
+        display: block;
+    }
+
+    .profile-card-small {
+        width: 180px;
+        height: 310px;
+        margin-top: 5px;
+    }
 }

@@ -12,9 +12,9 @@ class ApplicationController < ActionController::Base
   private
     def redirect_if_not_owner
       if !@pet
-        redirect_to pets_path, alert: "Pet does not exist."
+        redirect_to root_path, alert: "Pet does not exist."
       elsif @pet.user != current_user
-        redirect_to pet_path(@pet), alert: "This is not yours to edit."
+        redirect_to root_path, alert: "This is not yours to view."
       end
     end
 
@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
         redirect_to route, alert: message
       end
     end
+
+    def redirect_if_not_participant
+      if @event.host != current_user && @event.pets.first.user != current_user
+        redirect_back(fallback_location:"/", alert: "This is not yours to edit.")
+      end
+    end
     
   #   def redirect_if_logged_in
   #     if logged_in?
@@ -37,8 +43,8 @@ class ApplicationController < ActionController::Base
   #   end
 
   #    # set flash key/value and redirect to route
-  #   def redirect_to(route, type, message)
-  #     flash[type] = message
-  #     redirect route
-  #   end
+    # def redirect_to(route, type, message)
+    #   flash[type] = message
+    #   redirect_to route
+    # end
 end
