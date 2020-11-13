@@ -1,11 +1,3 @@
-GIT
-  remote: https://github.com/faker-ruby/faker.git
-  revision: 8b551c296fab26154acf67b24c30d607edac0542
-  branch: master
-  specs:
-    faker (2.14.0)
-      i18n (>= 1.6, < 2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,8 +45,6 @@ GEM
     activerecord (6.0.3.4)
       activemodel (= 6.0.3.4)
       activesupport (= 6.0.3.4)
-    activerecord-postgresql-adapter (0.0.1)
-      pg
     activestorage (6.0.3.4)
       actionpack (= 6.0.3.4)
       activejob (= 6.0.3.4)
@@ -223,7 +213,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -258,13 +247,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgresql-adapter
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
   city-state
   devise
-  faker!
   image_processing (~> 1.0)
   jbuilder (~> 2.7)
   listen (~> 3.2)
@@ -278,7 +265,6 @@ DEPENDENCIES
   selenium-webdriver
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
