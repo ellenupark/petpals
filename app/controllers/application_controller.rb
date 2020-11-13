@@ -18,6 +18,15 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def redirect_if_not_event_owner
+      @event = Event.find_by_id(params[:id])
+      if !@event
+          redirect_to root_path, alert: "Event does not exist."
+      elsif @event.host != current_user && @event.pets.first.user != current_user
+          redirect_to root_path, alert: "This is not yours to view."
+      end
+    end
+
     def redirect_if_no_pets
       if current_user.pets.empty?
         redirect_back(fallback_location:"/", alert: "You do not have any pets!")

@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     def create
         @event = Event.new(event_params)
         @event.invites.last.pet = Pet.all.find_by_id(params[:event][:pet_id])
+
         if @event.save
             redirect_to pet_event_path(@event.pets.first.id, @event.id)
         else
@@ -24,7 +25,7 @@ class EventsController < ApplicationController
         if params[:pet_id]
             @pet = Pet.find_by_id(params[:pet_id])
             @event = Event.find_by_id(params[:id])
-            redirect_if_not_owner
+            redirect_if_not_event_owner
         else
             @event = Event.find_by_id(params[:id])
         end
@@ -67,14 +68,5 @@ class EventsController < ApplicationController
     def event_params
         params.require(:event).permit(:date, :address_line_one, :address_line_two, :city, :state, :zip, :host_pet_id, :accepted,
         invites_attributes: [:message])
-    end
-
-    def redirect_if_not_event_owner
-        @event = Event.find_by_id(params[:id])
-        if !@event
-          redirect_to root_path, alert: "Event does not exist."
-        elsif @event.host_pet.user != current_user && @event.pets.first.user != current_user
-          redirect_to root_path, alert: "This is not yours to view."
-        end
     end
 end
