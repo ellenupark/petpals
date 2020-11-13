@@ -4,13 +4,6 @@ require_relative 'application'
 # Initialize the Rails application.
 Rails.application.initialize!
 
-configure :development do
-    ActiveRecord::Base.establish_connection(
-    :adapter => "sqlite3",
-    :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
-  )
-  end
-  
   configure :production do
     db = URI.parse(ENV['HEROKU_POSTGRESQL_SILVER'] || 'postgres://localhost/mydb')
   
