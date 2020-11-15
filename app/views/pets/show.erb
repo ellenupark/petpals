@@ -22,27 +22,24 @@
             <% end %>
 
             <% if @pet.user == current_user %>
-                <% if !current_user.confirmed_events.empty? %>
-                    <h3 class="title is-3 top-padding">Upcoming Events</h3>
-                    <% current_user.confirmed_events.each do | event | %>
-                        <% if event.pets.first == @pet || event.host_pet == @pet %>
-                            <div>
-                                <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
-                                <% if Pet.find_by_id(event.host_pet_id).user == current_user %>
-                                    <p>Playdate with <%= event.pets.first.name %></p>
-                                <% else %>
-                                    <p>Playdate with <%= event.host_pet.name %></p>
-                                <% end %>
-                                <%= link_to "View", pet_event_path(params[:id], event.id), class: "button is-small is-light is-primary button-spacing" %>
-                            </div><br>
-                        <% else %>
-                            <div>
-                                <p>None scheduled.</p>
-                                <%= link_to "Find Playmate?", pets_path %>
-                            </div>
-                            <% break %>
-                        <% end %>
+                <h3 class="title is-3 top-padding">Upcoming Events</h3>
+                <% if !@pet.events.empty? %>
+                    <% @pet.events.each do | event | %>
+                        <div>
+                            <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
+                            <% if Pet.find_by_id(event.host_pet_id).user == current_user %>
+                                <p>Playdate with <%= event.pets.first.name %></p>
+                            <% else %>
+                                <p>Playdate with <%= event.host_pet.name %></p>
+                            <% end %>
+                            <%= link_to "View", pet_event_path(params[:id], event.id), class: "button is-small is-light is-primary button-spacing" %>
+                        </div><br>
                     <% end %>
+                <% else %>
+                    <div>
+                        <p>None scheduled.</p>
+                        <%= link_to "Find Playmate?", pets_path %>
+                    </div>
                 <% end %>
             <% end %>
         </div>

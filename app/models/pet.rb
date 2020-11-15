@@ -20,6 +20,14 @@ class Pet < ApplicationRecord
     end
 
     def birthdate_cannot_be_in_the_future
-        errors.add(:birthdate, "must be in the past.") if birthdate > Date.today
+        if birthdate
+            errors.add(:birthdate, "must be in the past.") if birthdate > Date.today
+        end
     end  
+
+    def events 
+        self.user.confirmed_events.select do | event |
+            event.pets.first == self || event.host_pet == self
+        end
+    end
 end
