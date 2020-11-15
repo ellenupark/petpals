@@ -5,6 +5,8 @@ class Pet < ApplicationRecord
     has_one_attached :avatar
 
     validates :name, :breed, :weight, :gender, :birthdate, presence: true
+    validate :birthdate_cannot_be_in_the_future
+
 
     def age
         if ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor == 0
@@ -16,4 +18,8 @@ class Pet < ApplicationRecord
         end
         age
     end
+
+    def birthdate_cannot_be_in_the_future
+        errors.add(:birthdate, "must be in the past.") if birthdate > Date.today
+    end  
 end
