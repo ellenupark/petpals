@@ -48,7 +48,7 @@ class PetsController < ApplicationController
     if @pet
       @pet.update(pet_params)
       if @pet.errors.any?
-        render "edit"
+        redirect_to edit_pet_path(@pet), alert: "Failed to edit pet: #{@pet.errors.full_messages.to_sentence}"
       else
         redirect_to @pet
       end
