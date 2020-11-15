@@ -75,7 +75,7 @@
 
       <div class="actions">
         <%= f.submit "Update", class: "button is-info is-light inline" %>
-        <%= link_to 'Cancel', :back, class: "button is-light inline"%>
+        <%= link_to 'Cancel', user_path(current_user.id), class: "button is-light inline"%>
       </div>
     <% end %>
 
