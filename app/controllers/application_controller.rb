@@ -33,6 +33,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def redirect_if_pet_belongs_to_user
+      current_user.pets.each do | pet |
+        redirect_to pets_path, alert: "Cannot invite your own pet to a playdate." if pet.id.to_s == params[:pet_id] 
+      end
+    end
+
     def redirect_if_not_logged_in(route, message)
       if !user_signed_in?
         redirect_to route, alert: message

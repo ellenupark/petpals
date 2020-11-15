@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
     def new
         redirect_if_no_pets
+        redirect_if_pet_belongs_to_user
         
         @recipient = Pet.find_by_id(params[:pet_id])
         @event = Event.new
