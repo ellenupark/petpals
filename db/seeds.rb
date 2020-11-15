@@ -76,4 +76,6 @@ confirmed_event_one.invites.create(pet_id: 3, message: "Hello!")
 confirmed_event_two = Event.create(date: "2020-11-13 13:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 3, accepted: true)
 confirmed_event_two.invites.create(pet_id: 10, message: "Hello!")
 
+confirmed_event_three = Event.create(date: "2020-11-05 12:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: true)
+confirmed_event_three.invites.create(pet_id: 4, message: "Hello!")
 
