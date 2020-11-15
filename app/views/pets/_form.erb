@@ -23,14 +23,14 @@
         <div class="field">
             <%= f.label :weight, "Weight", class: "label" %>
             <div class="select">
-                <%= f.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'], class: "input" %>
+                <%= f.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'], class: "input", prompt: "Select Weight" %>
             </div>
         </div>
 
         <div class="field">
             <%= f.label :gender, "Gender", class: "label" %>
             <div class="select">
-                <%= f.select :gender, ['Male', 'Female'], class: "input" %>
+                <%= f.select :gender, ['Male', 'Female'], class: "input", prompt: "Select Gender" %>
             </div>
         </div>
 
