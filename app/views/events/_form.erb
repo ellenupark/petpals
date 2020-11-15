@@ -1,7 +1,7 @@
 <div class="form-width">
 
   <% if @event.errors.any? %>
-          <h5 class="error"><%= @event.errors.full_messages.to_sentence %></h5>
+    <h5 class="error"><%= @event.errors.full_messages.to_sentence %></h5>
   <% end %>
 
   <%= form_for @event do |f| %>
