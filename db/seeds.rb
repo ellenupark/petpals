@@ -47,7 +47,7 @@ loki.avatar.attach(io: File.open('./public/seed_images/Australian-Shepherd.jpeg'
 loki.save
 
 lucy = susan.pets.create(name: "Lucy", breed: "Golden Retriever", gender: "Female", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
-lucy.avatar.attach(io: File.open('./public/seed_images/keeshond.jpg'), filename: 'keeshond.jpg')
+lucy.avatar.attach(io: File.open('./public/seed_images/golden-retriever-dog-breed-info.jpg'), filename: 'golden-retriever-dog-breed-info.jpg')
 lucy.save
 
 shishito = michael.pets.create(name: "Shishito", breed: "Chihuahua", gender: "Male", weight: 'XSmall 0-4lbs', birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
@@ -73,9 +73,9 @@ pending_event_three.invites.create(pet_id: 1, message: "Hello!")
 confirmed_event_one = Event.create(date: "2020-11-17 19:21:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 1, accepted: true)
 confirmed_event_one.invites.create(pet_id: 3, message: "Hello!")
 
-confirmed_event_two = Event.create(date: "2020-11-13 13:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 3, accepted: true)
+confirmed_event_two = Event.create(date: "2020-11-19 13:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 3, accepted: true)
 confirmed_event_two.invites.create(pet_id: 10, message: "Hello!")
 
-confirmed_event_three = Event.create(date: "2020-11-05 12:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: true)
-confirmed_event_three.invites.create(pet_id: 4, message: "Hello!")
+# confirmed_event_three = Event.create(date: "2020-11-05 12:30:00", address_line_one: Faker::Address.street_address, address_line_two: Faker::Address.secondary_address, city: "Brooklyn", state: "NY", zip: Faker::Address.zip, host_pet_id: 2, accepted: true)
+# confirmed_event_three.invites.create(pet_id: 4, message: "Hello!")
 

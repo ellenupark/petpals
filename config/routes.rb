@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'callbacks', sessions: 'users/sessions' }
 
   get '/search', to: 'pets#search', as: 'search_page'
-
   
   resources :pets do
     resources :events, only: [:show, :new]

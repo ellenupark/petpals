@@ -9,7 +9,6 @@ class User < ApplicationRecord
   has_many :pets
 
   def self.from_omniauth(auth)
-    #from this array of data that is coming in, take provider and uid
     where(provider: auth.provider, uid: auth.uid).first_or_create do | user |
       user.provider = auth.provider
       user.username = auth.info.nickname

@@ -1,6 +1,6 @@
 <section class="section default">
     <% if @events.empty? %>
-        <h2 class="title is-2">No pending invitations.</h2>
+        <h3 class="title is-3 center-content">You have not sent any invitations. <%= link_to "Find Playmate?", pets_path %></h3>
     <% end %>
     <% @events.each do | event | %>
         <div class="center-content">

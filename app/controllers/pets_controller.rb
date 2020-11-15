@@ -36,7 +36,7 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to pet_path(@pet)
     else
-      render "new"
+      redirect_to new_pet_path, alert: "Failed to create pet: #{@pet.errors.full_messages.to_sentence}"
     end
   end
   

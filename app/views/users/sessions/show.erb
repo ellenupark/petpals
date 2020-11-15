@@ -12,7 +12,7 @@
                         <%= @user.state %>
                     </p><br>
                     <% if !@user.city %>
-                        <p class="notify">Complete profile so dog owners can find you!</p>
+                        <p class="notify">Complete profile details so dog owners can find you!</p>
                         <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing is-danger is-light" %><br>
                     <% else %>
                         <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing " %><br>
@@ -33,7 +33,7 @@
             </div>
             <div class="column">
                 <div class="center-content">
-                    <h3 class="title is-3">Upcoming Events</h3>
+                    <h3 class="title is-3">Upcoming Playdates</h3>
                     <% if !@user.confirmed_events.empty? %>
                         <% @user.confirmed_events.each do | event | %>
                             <div>
