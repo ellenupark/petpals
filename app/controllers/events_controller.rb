@@ -49,13 +49,17 @@ class EventsController < ApplicationController
         @events = current_user.unconfirmed_host_events
     end
 
-    def decline
-        redirect_to event_path(params[:id])
-    end
+    # def decline
+    #     redirect_to event_path(params[:id])
+    # end
 
     def destroy
+        if @event.accepted == false
+            @event.host == current_user ? flash[:notice] = "Successfully cancelled invitation." : flash[:notice] = "Successfully declined playdate."
+        else
+            flash[:notice] = "Successfully cancelled playdate."
+        end
         @event.destroy
-        #add cancel notification?
         redirect_to user_path(current_user.id)
     end
 
