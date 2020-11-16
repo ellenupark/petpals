@@ -50,14 +50,9 @@ class ApplicationController < ActionController::Base
         redirect_back(fallback_location:"/", alert: "This is not yours to edit.")
       end
     end
-    
-  #   def redirect_if_logged_in
-  #     if logged_in?
-  #       redirect "/madlibs"
-  #     end
-  #   end
 
-  #    # set flash key/value and redirect to route
+
+    # set flash key/value and redirect to route
     # def redirect_to(route, type, message)
     #   flash[type] = message
     #   redirect_to route

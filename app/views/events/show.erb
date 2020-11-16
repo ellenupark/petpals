@@ -1,5 +1,5 @@
 <section class="section default center-content">
-    <% if Event.past_events.include?(@event) && @event.accepted == true%>
+    <% if is_past_event?(@event) %>
         <h2 class="title is-2">Past Playdate</h2>
     <% elsif @event.accepted == true %>
         <h2 class="title is-2">Upcoming Playdate</h2>
