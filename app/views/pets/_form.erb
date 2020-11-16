@@ -1,8 +1,7 @@
 <div class="form-width">
     <% if @pet.errors.any? %>
-            <h5 class="error"><%= @pet.errors.full_messages.to_sentence %></h5>
+            <h5 class="error flash alert"><%= @pet.errors.full_messages.to_sentence %></h5>
     <% end %>
-
 
     <%= form_with model: @pet, local: true do |f| %>
         <div class="field">

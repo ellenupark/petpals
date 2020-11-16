@@ -25,7 +25,9 @@
                     <p>Size: <%= pet.weight %></p>
                     <p>Gender: <%= pet.gender %></p>
                     <p>Age: <%= pet.age %></p>
-                    <p>Location: <%= pet.user.city.capitalize %>, <%= pet.user.state %></p>
+                    <% if !pet.user.city.blank? && !pet.user.state.blank? %>
+                      <p>Location: <%= pet.user.city.capitalize %>, <%= pet.user.state %></p>
+                    <% end %>
                     <%= link_to "Invite", new_pet_event_path(pet.id), class: "button is-light is-small is-link button-spacing"%>
                 </div>
             <% end %>

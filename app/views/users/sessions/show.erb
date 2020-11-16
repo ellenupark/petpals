@@ -88,7 +88,7 @@
             <h3 class="title is-3"><%= @user.username.capitalize %>'s Profile</h3>
             <p>Joined <%= @user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
             <p>
-                <% if !@user.city.empty? %>
+                <% if !@user.city.blank? %>
                     <%= @user.city.titleize %>, 
                 <% end %>
                 <%= @user.state %>
