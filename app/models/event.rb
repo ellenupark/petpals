@@ -5,7 +5,7 @@ class Event < ApplicationRecord
     accepts_nested_attributes_for :invites
 
     validates :date, :address_line_one, :city, :state, :zip, presence: true
-    # validate :event_date_cannot_be_in_the_past
+    validate :event_date_cannot_be_in_the_past
 
     scope :past_events, lambda { where('date <= ?', Time.now ).where('accepted = ?', true) }
 

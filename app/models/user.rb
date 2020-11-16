@@ -5,6 +5,7 @@ class User < ApplicationRecord
   
   validates :username, presence: true
   validates :username, uniqueness: { case_sensitive: false }
+  validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/, message: "can only contain letters or numbers" }
   
   has_many :pets
 
