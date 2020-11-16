@@ -6,12 +6,10 @@
                     <h3 class="title is-3">Welcome <%= @user.username.capitalize %></h2>
                     <p>Joined <%= @user.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%B %Y") %></p>
                     <p>
-                        <% if @user.city %>
-                            <%= @user.city.titleize %>, 
-                        <% end %>
-                        <%= @user.state %>
+                        <%= @user.city.titleize if @user.city %>
+                        <%= @user.state if @user.state %>
                     </p><br>
-                    <% if !@user.city %>
+                    <% if @user.city.blank? || @user.state.blank? %>
                         <p class="notify">Complete profile details so dog owners can find you!</p>
                         <%= link_to "Edit Profile", edit_user_registration_path, class: "button button-spacing is-danger is-light" %><br>
                     <% else %>
