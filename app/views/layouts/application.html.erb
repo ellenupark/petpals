@@ -19,7 +19,7 @@
       <% if notice != nil %>
         <p class="flash notice"><%= notice %></p>
       <% elsif alert != nil %>
-        <p class="flash alert"><%= alert %></p>
+        <p class="flash alert"><%= sanitize(alert) %></p>
       <% end %>
       <%= render 'layouts/nav' %>
       <%= yield %>

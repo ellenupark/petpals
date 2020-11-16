@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
     def redirect_if_no_pets
       if current_user.pets.empty?
-        redirect_back(fallback_location:"/", alert: "You do not have any pets!")
+        redirect_back(fallback_location:"/", alert: "You do not have any pets! #{view_context.link_to 'Add Pet?', new_pet_path}")
       end
     end
 
