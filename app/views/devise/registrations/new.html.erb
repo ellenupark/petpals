@@ -20,7 +20,7 @@
       <div class="field">
         <%= f.label :state, class: "label" %>
         <div class="select">
-          <%= f.select :state, User.states %>
+          <%= f.select :state, states, prompt: "Select State" %>
         </div>
       </div>
 
