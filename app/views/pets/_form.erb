@@ -41,8 +41,9 @@
         </div>
 
         <div class="field">
-            <%= f.label :avatar, "Profile Image", class: "label" %>
-            <%= f.file_field :avatar %>
+            <%= f.label :image, "Profile Image", class: "label" %>
+            <%= form.file_field :image %>
+            <%= f.file_field :image %>
         </div>
 
         <%= f.submit class: "button is-info is-light inline" %>

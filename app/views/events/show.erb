@@ -35,7 +35,7 @@
         <% if @event.pets.first.user == current_user %>
             <div class="in-align">
                 <div class="column is-narrow profile-card-small center-content">
-                    <%= image_tag(@event.pets.first.avatar, style: "max-width: 100px", :class => "card-img") %>
+                    <%= image_tag(@event.pets.first.image, style: "max-width: 100px", :class => "card-img") %>
                     <p class="bold-font"><%= link_to @event.pets.first.name, pet_path(@event.pets.first.id) %></p>
                     <p>Breed: <%= @event.pets.first.breed %></p>
                     <p>Size: <%= @event.pets.first.weight %></p>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="column is-narrow profile-card-small center-content">
-                    <%= image_tag(@event.host_pet.avatar, style: "max-width: 100px", :class => "card-img") %>
+                    <%= image_tag(@event.host_pet.image, style: "max-width: 100px", :class => "card-img") %>
                     <p class="bold-font"><%= link_to @event.host_pet.name, pet_path(@event.host_pet.id) %></p>
                     <p>Breed: <%= @event.host_pet.breed %></p>
                     <p>Size: <%= @event.host_pet.weight %></p>
@@ -57,7 +57,7 @@
         <% else %>
             <div class="in-align">
                 <div class="column is-narrow profile-card-small center-content">
-                    <%= image_tag(@event.host_pet.avatar, style: "max-width: 100px", :class => "card-img") %>
+                    <%= image_tag(@event.host_pet.image, style: "max-width: 100px", :class => "card-img") %>
                     <p class="bold-font"><%= link_to @event.host_pet.name, pet_path(@event.host_pet.id) %></p>
                     <p>Breed: <%= @event.host_pet.breed %></p>
                     <p>Size: <%= @event.host_pet.weight %></p>
@@ -66,7 +66,7 @@
                 </div>
 
                 <div class="column is-narrow profile-card-small center-content">
-                    <%= image_tag(@event.pets.first.avatar, style: "max-width: 100px", :class => "card-img") %>
+                    <%= image_tag(@event.pets.first.image, style: "max-width: 100px", :class => "card-img") %>
                     <p class="bold-font"><%= link_to @event.pets.first.name, pet_path(@event.pets.first.id) %></p>
                     <p>Breed: <%= @event.pets.first.breed %></p>
                     <p>Size: <%= @event.pets.first.weight %></p>

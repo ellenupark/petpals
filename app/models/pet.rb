@@ -2,7 +2,7 @@ class Pet < ApplicationRecord
     has_many :invites, dependent: :destroy
     has_many :events, through: :invites, dependent: :destroy
     belongs_to :user
-    has_one_attached :avatar
+    # has_one_attached :avatar
 
     validates :name, :breed, :weight, :gender, :birthdate, presence: true
     validate :birthdate_cannot_be_in_the_future
