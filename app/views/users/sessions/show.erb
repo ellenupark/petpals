@@ -33,7 +33,7 @@
                 <div class="center-content">
                     <h3 class="title is-3">Upcoming Playdates</h3>
                     <% if !@user.confirmed_events.empty? %>
-                        <% @user.confirmed_events.each do | event | %>
+                        <% @user.confirmed_events.select{ | event | !!event.host_pet }.each do | event | %>
                             <div>
                                 <% if event.host_pet.user == @user %>
                                     <p>Playdate with <%= event.host_pet.name %> and <%= event.pets.first.name %></p>
@@ -58,8 +58,8 @@
             <div class="column">
                 <div class="center-content">
                     <h3 class="title is-3">New Invites</h3>
-                    <% if !@user.unconfirmed_attendee_events.empty? %>
-                        <% @user.unconfirmed_attendee_events.each do | event | %>
+                    <% if !@user.unconfirmed_attendee_events.select{ | event | !!event.host_pet }.empty? %>
+                        <% @user.unconfirmed_attendee_events.select{ | event | !!event.host_pet }.each do | event | %>
                             <article class="message is-danger">
                                 <div class="message-header">
                                     <p><%= event.host.username.capitalize %> has invited <%= event.pets.first.name.capitalize %> to the following <%= link_to "Playdate", event_path(event) %> </p>

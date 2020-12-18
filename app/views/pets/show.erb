@@ -25,8 +25,8 @@
 
             <% if @pet.user == current_user %>
                 <h3 class="title is-3 top-padding">Upcoming Events</h3>
-                <% if !@pet.events.empty? %>
-                    <% @pet.events.each do | event | %>
+                <% if !@pet.events.select{|event| !!event.host_pet }.empty? %>
+                    <% @pet.events.select{|event| !!event.host_pet }.each do | event | %>
                         <div>
                             <p><%= event.date.strftime("%A, %B %eth, %Y at %l:%M%p") %></p>
                             <% if Pet.find_by_id(event.host_pet_id).user == current_user %>

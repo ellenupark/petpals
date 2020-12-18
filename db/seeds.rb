@@ -16,7 +16,7 @@ ruth = User.create(email: "ruth@ruth.com", username: "ruth", city: "Seattle", st
 
 sumi = ellen.pets.create(name: "Mochi", image: 'https://animalso.com/wp-content/uploads/2016/10/Pomsky-3-1.jpg', breed: "Pomsky", gender: "Male", weight: "Medium 11-23lbs", birthdate: "2020-05-06")
 
-bianca = ellen.pets.create(name: "Bianca", image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Bichon_Fris%C3%A9_sitting.jpg/1200px-Bichon_Fris%C3%A9_sitting.jpg', breed: "Bichon Frise", gender: "Female", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
+bianca = ellen.pets.create(name: "Bianca", image: 'https://www.thegoodypet.com/wp-content/uploads/elementor/thumbs/how-old-does-a-bichon-frise-live-1-oyq5liedchiyxhhdm0sdksv57xy3324iwkvhar5fow.jpg', breed: "Bichon Frise", gender: "Female", weight: "Medium 11-23lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 
 spot = kyo.pets.create(name: "Spot", image: 'https://www.rd.com/wp-content/uploads/2019/07/shutterstock_1161034495-scaled.jpg', breed: "Dalmation", gender: "Male", weight: "XLarge 46-70lbs", birthdate: Faker::Date.between(from: '2010-01-01', to: '2020-10-31'))
 

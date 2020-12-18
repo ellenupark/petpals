@@ -23,9 +23,9 @@ class EventsController < ApplicationController
 
     def show
         if params[:pet_id]
+            redirect_if_event_does_not_exist
             @pet = Pet.find_by_id(params[:pet_id])
             @event = Event.find_by_id(params[:id])
-            redirect_if_not_event_owner
         else
             @event = Event.find_by_id(params[:id])
         end
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
     end
 
     def past_events 
-        @events = Event.past_events.select { | event | event.host == current_user || event.pets.first.user == current_user }
+        @events = Event.past_events.select { | event | !!event.host_pet && event.host == current_user || event.pets.first.user == current_user }
     end
 
     def pending

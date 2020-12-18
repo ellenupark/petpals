@@ -10,8 +10,12 @@ class Event < ApplicationRecord
     scope :past_events, -> { where('date <= ?', Time.now ).where('accepted = ?', true) }
 
     def host
-        pet = Pet.find_by_id(self.host_pet_id)
-        User.find_by_id(pet.user.id)
+        if !!Pet.find_by_id(self.host_pet_id)
+            pet = Pet.find_by_id(self.host_pet_id)
+            User.find_by_id(pet.user.id)
+        else
+            return false;
+        end
     end
 
     def host_pet

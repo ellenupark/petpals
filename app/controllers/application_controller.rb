@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def redirect_if_event_does_not_exist
+      if @event.accepted === true && !@event.host
+        redirect_to root_path, alert: "Event does not exist."
+      end
+    end
+
     def redirect_if_not_event_owner
       @event = Event.find_by_id(params[:id])
       if !@event
