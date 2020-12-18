@@ -40,6 +40,7 @@
                     <p>Breed: <%= @event.pets.first.breed %></p>
                     <p>Size: <%= @event.pets.first.weight %></p>
                     <p>Gender: <%= @event.pets.first.gender %></p>
+                    <p>Age: <%= @event.pets.first.age %></p>
                     <%= link_to "View", pet_path(@event.pets.first.id), class: "button is-small" %>
                 </div>
 
@@ -49,6 +50,7 @@
                     <p>Breed: <%= @event.host_pet.breed %></p>
                     <p>Size: <%= @event.host_pet.weight %></p>
                     <p>Gender: <%= @event.host_pet.gender %></p>
+                    <p>Age: <%= @event.host_pet.age %></p>
                     <%= link_to "View", pet_path(@event.host_pet.id), class: "button is-small" %>
                 </div>
             </div>

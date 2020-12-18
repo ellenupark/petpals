@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: { case_sensitive: false }
   validates :username, format: { with: /\A[a-zA-Z0-9]+\Z/, message: "can only contain letters or numbers" }
   
-  has_many :pets
+  has_many :pets, dependent: :destroy
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do | user |

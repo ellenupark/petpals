@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-    has_many :invites
+    has_many :invites, dependent: :destroy
     has_many :pets, through: :invites
 
     accepts_nested_attributes_for :invites
@@ -7,7 +7,7 @@ class Event < ApplicationRecord
     validates :date, :address_line_one, :city, :state, :zip, presence: true
     validate :event_date_cannot_be_in_the_past
 
-    scope :past_events, lambda { where('date <= ?', Time.now ).where('accepted = ?', true) }
+    scope :past_events, -> { where('date <= ?', Time.now ).where('accepted = ?', true) }
 
     def host
         pet = Pet.find_by_id(self.host_pet_id)

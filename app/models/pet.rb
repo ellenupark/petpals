@@ -1,12 +1,13 @@
 class Pet < ApplicationRecord
-    has_many :invites
-    has_many :events, through: :invites
+    has_many :invites, dependent: :destroy
+    has_many :events, through: :invites, dependent: :destroy
     belongs_to :user
     has_one_attached :avatar
 
     validates :name, :breed, :weight, :gender, :birthdate, presence: true
     validate :birthdate_cannot_be_in_the_future
 
+    scope :random_pet, -> { Pet.all.sample }
 
     def age
         if ((Time.zone.now - self.birthdate.to_time) / 1.year.seconds).floor == 0

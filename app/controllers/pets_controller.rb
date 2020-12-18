@@ -58,6 +58,8 @@ class PetsController < ApplicationController
   end
   
   def destroy
+    events = Event.all.select { | event | event.host_pet == @pet || event.pets.first == @pet }
+    events.each { | event | event.destroy }
     @pet.destroy
     redirect_to user_path(current_user.id), notice: "Successfully deleted pet."
   end

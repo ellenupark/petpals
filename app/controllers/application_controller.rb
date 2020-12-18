@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :authenticate_user!, only: [:home]
 
   def home
+    @pet = Pet.random_pet
   end
 
   def after_sign_in_path_for(resource)
@@ -50,7 +51,6 @@ class ApplicationController < ActionController::Base
         redirect_back(fallback_location:"/", alert: "This is not yours to edit.")
       end
     end
-
 
     # set flash key/value and redirect to route
     # def redirect_to(route, type, message)
