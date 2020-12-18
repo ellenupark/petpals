@@ -3,50 +3,49 @@
             <h5 class="error flash alert"><%= @pet.errors.full_messages.to_sentence %></h5>
     <% end %>
 
-    <%= form_with model: @pet, local: true do |f| %>
+    <%= form_with model: @pet, local: true do |form| %>
         <div class="field">
-            <%= f.label :name, "Name", class: "label" %>
+            <%= form.label :name, "Name", class: "label" %>
 
             <div class="control">
-                <%= f.text_field :name, class: "input" %>
+                <%= form.text_field :name, class: "input" %>
             </div>
         </div>
 
         <div class="field">
-            <%= f.label :breed, "Breed", class: "label" %>
+            <%= form.label :breed, "Breed", class: "label" %>
             <div class="control">
-                <%= f.text_field :breed, class: "input" %>
+                <%= form.text_field :breed, class: "input" %>
             </div>
         </div>
 
         <div class="field">
-            <%= f.label :weight, "Weight", class: "label" %>
+            <%= form.label :weight, "Weight", class: "label" %>
             <div class="select">
-                <%= f.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'], class: "input", prompt: "Select Weight" %>
+                <%= form.select :weight, ['XSmall 0-4lbs', 'Small 5-10lbs', 'Medium 11-23lbs', 'Large 24-45lbs', 'XLarge 46-70lbs', '2XLarge 71-85lbs', '3XLarge 86lbs+'], class: "input", prompt: "Select Weight" %>
             </div>
         </div>
 
         <div class="field">
-            <%= f.label :gender, "Gender", class: "label" %>
+            <%= form.label :gender, "Gender", class: "label" %>
             <div class="select">
-                <%= f.select :gender, ['Male', 'Female'], class: "input", prompt: "Select Gender" %>
+                <%= form.select :gender, ['Male', 'Female'], class: "input", prompt: "Select Gender" %>
             </div>
         </div>
 
         <div class="field">
-            <%= f.label :birthdate, class: "label" %>
+            <%= form.label :birthdate, class: "label" %>
             <div class="control"> 
-                <%= f.date_field :birthdate, class: "input" %>
+                <%= form.date_field :birthdate, class: "input" %>
             </div>
         </div>
 
         <div class="field">
-            <%= f.label :image, "Profile Image", class: "label" %>
+            <%= form.label :image, "Profile Image", class: "label" %>
             <%= form.file_field :image %>
-            <%= f.file_field :image %>
         </div>
 
-        <%= f.submit class: "button is-info is-light inline" %>
+        <%= form.submit class: "button is-info is-light inline" %>
         <%= link_to 'Cancel', @pet, class: "button is-light inline"%><br>
     <% end %> 
 </div>
