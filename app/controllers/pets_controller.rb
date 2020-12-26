@@ -28,7 +28,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = current_user
 
-    if !@pet.image
+    if @pet.image == ""
       @pet.image = 'https://icon-library.com/images/default-profile-icon/default-profile-icon-16.jpg'
     end
 
