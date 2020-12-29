@@ -1,5 +1,11 @@
 # Pet Pals - Rails App
 
+## Project Demo
+
+[petpals-finder.herokuapp](https://petpals-finder.herokuapp.com/) | [Summary Video](https://www.youtube.com/watch?v=deORxiINv8I)
+
+## Description
+
 A rails application designed for users to find and arrange play dates for their dogs.
 * Users sign up to create an account.
 * Once logged in to the app, users can create their pets, search for dogs, and schedule play dates.
@@ -30,3 +36,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/ellenu
 
 ## License
 The app is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Further Information
+[Personal Website](https://ellenupark.github.io) | [LinkedIn](http://www.linkedin.com/in/ellenupark) | [Blog](https://ellen-park.medium.com/)
