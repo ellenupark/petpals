@@ -6,6 +6,8 @@
 
 ## Description
 
+<img src="./public/seed_images/githubimage.png" width="400">
+
 A rails application designed for users to find and arrange play dates for their dogs.
 * Users sign up to create an account.
 * Once logged in to the app, users can create their pets, search for dogs, and schedule play dates.
