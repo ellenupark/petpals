@@ -216,6 +216,15 @@ body {
     clear: both;
 }
 
+/* --------- USER HOME PAGE --------- */
+
+.owned-pets {
+    object-fit: cover;
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+}
+
 /* --------- PETS SHOW PAGE --------- */
 
 .profile-card {
