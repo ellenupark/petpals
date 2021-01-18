@@ -134,8 +134,9 @@ body {
 }
 
 .profile-img img {
-    width: 100%;
-    height: auto;
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
 }
 
 /* --------- USER PROFILE PAGE --------- */
@@ -241,7 +242,7 @@ body {
     border-radius: 10px;
     background: #E4FDE1;
     width: 280px;
-    height: 310px;
+    height: 330px;
     margin: 20px;
     text-align: center;
     /* flex: 1; */
