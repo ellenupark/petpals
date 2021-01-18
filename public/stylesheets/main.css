@@ -242,9 +242,9 @@ body {
     background: #E4FDE1;
     width: 280px;
     height: 310px;
-    margin: 0 auto;
+    margin: 20px;
     text-align: center;
-    flex: 1;
+    /* flex: 1; */
 }
 
 .card-img {
@@ -266,16 +266,4 @@ footer.branding {
 
 .button-spacing {
     margin: 5px;
-}
-
-@media screen and (max-width: 600px) {
-    .in-align {
-        display: block;
-    }
-
-    .profile-card-small {
-        width: 180px;
-        height: 310px;
-        margin-top: 5px;
-    }
 }
