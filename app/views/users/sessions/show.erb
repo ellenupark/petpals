@@ -100,7 +100,7 @@
                 <% @pets.each do | pet | %>
                     <div class="inline">
                         <%= link_to pet.name, pet_path(pet.id), class: "bold-font" %><br>
-                        <%= link_to (image_tag(pet.image, style: "border-radius: 100%; max-width: 200px")), pet_path(pet.id) %><br>
+                        <%= link_to (image_tag(pet.image, class: "owned-pet")), pet_path(pet.id) %><br>
                     </div>
                 <% end %>
             <% end %>
