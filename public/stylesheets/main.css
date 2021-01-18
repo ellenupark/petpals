@@ -221,7 +221,7 @@ body {
 .profile-card {
     border-radius: 10px;
     background: #E4FDE1;
-    padding: 20px;
+    /* padding: 20px; */
     width: 280px;
     height: 375px;
     margin: 10px;
@@ -240,10 +240,9 @@ body {
 
 .card-img {
     border-radius: 10px;
-    min-width: 150px;
-    min-height: 120px;
-    max-height: 200px;
-    
+    width: 75%;
+    height: 150px;
+    object-fit: cover;
 }
 
 /* FOOTER */
