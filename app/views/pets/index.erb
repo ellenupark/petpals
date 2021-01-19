@@ -28,7 +28,7 @@
                     <% if !pet.user.city.blank? && !pet.user.state.blank? %>
                       <p>Location: <%= pet.user.city.capitalize %>, <%= pet.user.state %></p>
                     <% end %>
-                    <%= link_to "Invite", new_pet_event_path(pet.id), class: "button is-light is-small is-link button-spacing"%>
+                    <%= link_to "INVITE", new_pet_event_path(pet.id), class: "button is-primary is-small button-spacing"%>
                 </div>
             <% end %>
         <% end %>

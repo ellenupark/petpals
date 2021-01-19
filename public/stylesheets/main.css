@@ -231,11 +231,14 @@ body {
 .profile-card {
     border-radius: 10px;
     background: #E4FDE1;
-    /* padding: 20px; */
     width: 280px;
     height: 375px;
     margin: 10px;
     text-align: center;
+}
+
+.profile-card a {
+    font-weight: bold;
 }
 
 .profile-card-small {
@@ -245,7 +248,6 @@ body {
     height: 330px;
     margin: 20px;
     text-align: center;
-    /* flex: 1; */
 }
 
 .card-img {
